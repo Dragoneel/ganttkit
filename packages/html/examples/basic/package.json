@@ -1,0 +1,27 @@
+{
+  "name": "@ganttkit/example-html",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ganttkit/html": "workspace:*",
+    "@ganttkit/plugin-baseline": "workspace:*",
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-dependencies": "workspace:*",
+    "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-i18n": "workspace:*",
+    "@ganttkit/plugin-markers": "workspace:*",
+    "@ganttkit/plugin-progress": "workspace:*",
+    "@ganttkit/plugin-selection": "workspace:*",
+    "@ganttkit/plugin-toolbar": "workspace:*",
+    "@ganttkit/plugin-tooltip": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

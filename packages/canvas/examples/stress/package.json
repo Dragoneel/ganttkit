@@ -1,0 +1,19 @@
+{
+  "name": "@ganttkit/example-canvas-stress",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ganttkit/canvas": "workspace:*",
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-filter": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

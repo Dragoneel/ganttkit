@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GanttKit · Resource scheduling (drag-to-assign)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .page {
+      padding: 12px 16px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar button {
+      padding: 6px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .toolbar button:hover {
+      background: #eef2ff;
+    }
+
+    .hint {
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b7280;
+      margin: 10px 2px 4px;
+    }
+
+    /* The two stacked charts. Each `.gantt` fills its wrapper's height. */
+    #resources {
+      height: 43vh;
+    }
+
+    #tasks {
+      height: 43vh;
+    }
+
+    .log {
+      margin: 10px 2px 0;
+      font: 12px/1.5 monospace;
+      color: #6b7280;
+      min-height: 1.5em;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="toolbar">
+      <strong>GanttKit · Resource scheduling</strong>
+      <span style="width:12px"></span>
+      <span>View:</span>
+      <button id="vm-Day">Day</button>
+      <button id="vm-Week">Week</button>
+      <button id="vm-Month">Month</button>
+      <button id="theme">Toggle theme</button>
+      <span class="hint">· drag a <b>task</b> bar up onto a <b>resource</b> lane to assign · <b>rubber-band</b> or
+        <b>Ctrl/⌘-click</b> free days to select slots (Esc clears), then drag the selection onto a task ·
+        drag an assignment to retime / move lane · drag it off to unassign</span>
+    </div>
+
+    <div class="section-label">Resources — availability &amp; bookings (light-red = unavailable) (top)</div>
+    <div id="resources"></div>
+
+    <div class="section-label">Tasks — drag a bar up to assign it (bottom)</div>
+    <div id="tasks"></div>
+
+    <!-- <pre class="log" id="log"></pre> -->
+  </div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
+</html>

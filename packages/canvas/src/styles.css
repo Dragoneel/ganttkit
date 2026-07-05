@@ -1,0 +1,415 @@
+/**
+ * GanttKit default theme for the canvas renderer (`@ganttkit/canvas`). Scope:
+ * `.gantt`. Switch themes with `data-theme="light|dark"` on the root element.
+ *
+ * The layout/header/sidebar rules are identical to `@ganttkit/svg`. There are no
+ * "scene primitive" rules here: the canvas renderer paints bars/lines/text
+ * itself, reading these `--gk-*` variables via `getComputedStyle`. Keep the
+ * variables  they are the renderer's colour source, not just CSS styling.
+ */
+.gantt,
+.gantt[data-theme='light'] {
+  --gk-bg: #ffffff;
+  --gk-header-bg: #f2f3f5;
+  --gk-sidebar-bg: #f9fafb;
+  --gk-row-bg: #f9fafb;
+  --gk-border: #e5e7eb;
+  --gk-border-strong: #d1d5db;
+  --gk-border-subtle: #f3f4f6;
+  --gk-text: #374151;
+  --gk-text-muted: #6b7280;
+  --gk-grid: #e5e7eb;
+  --gk-grid-weekend: #d1d5db;
+  --gk-weekend-bg: #f2f3f5;
+  --gk-today-bg: #dbeafe;
+  --gk-today-text: #1e40af;
+  --gk-bar: #93c5fd;
+  --gk-bar-stroke: #3b82f6;
+  --gk-label: #1f2937;
+  --gk-dep: #60a5fa;
+  --gk-milestone: #fbbf24;
+  --gk-milestone-stroke: #f59e0b;
+  --gk-accent: #3b82f6;
+  --gk-progress: rgba(31, 41, 55, 0.22);
+  --gk-marker: #ef4444;
+  --gk-marker-band: rgba(59, 130, 246, 0.08);
+  --gk-baseline: #9ca3af;
+}
+
+.gantt[data-theme='dark'] {
+  --gk-bg: #1e1e21;
+  --gk-header-bg: #27272a;
+  --gk-sidebar-bg: #27272a;
+  --gk-row-bg: #1e1e21;
+  --gk-border: #3f3f46;
+  --gk-border-strong: #52525b;
+  --gk-border-subtle: #2a2a2e;
+  --gk-text: #e4e4e7;
+  --gk-text-muted: #a1a1aa;
+  --gk-grid: #3f3f46;
+  --gk-grid-weekend: #52525b;
+  --gk-weekend-bg: #27272a;
+  --gk-today-bg: #1e3a5f;
+  --gk-today-text: #93c5fd;
+  --gk-bar: #3b82f6;
+  --gk-bar-stroke: #60a5fa;
+  --gk-label: #e4e4e7;
+  --gk-dep: #60a5fa;
+  --gk-milestone: #fbbf24;
+  --gk-milestone-stroke: #f59e0b;
+  --gk-accent: #60a5fa;
+  --gk-progress: rgba(255, 255, 255, 0.30);
+  --gk-marker: #f87171;
+  --gk-marker-band: rgba(96, 165, 250, 0.12);
+  --gk-baseline: #6b7280;
+}
+
+.gantt {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--gk-border);
+  background: var(--gk-bg);
+  color: var(--gk-text);
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Plugin UI slots */
+.gantt__toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--gk-border);
+  background: var(--gk-header-bg);
+}
+
+.gantt__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.gantt__slot-item--toolbar {
+  display: contents;
+}
+
+.gantt__slot-item--overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Toolbar controls (used by @ganttkit/plugin-toolbar) */
+.gantt__tb-group {
+  display: inline-flex;
+  border: 1px solid var(--gk-border-strong);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.gantt__tb-btn {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 13px;
+  border: 1px solid var(--gk-border-strong);
+  border-radius: 6px;
+  background: var(--gk-bg);
+  color: var(--gk-text);
+  cursor: pointer;
+}
+
+.gantt__tb-group .gantt__tb-btn {
+  border: none;
+  border-right: 1px solid var(--gk-border-strong);
+  border-radius: 0;
+}
+
+.gantt__tb-group .gantt__tb-btn:last-child {
+  border-right: none;
+}
+
+.gantt__tb-btn:hover {
+  background: var(--gk-header-bg-alt, var(--gk-row-bg));
+}
+
+.gantt__tb-btn.is-active {
+  background: var(--gk-accent);
+  color: #fff;
+}
+
+/* Tooltip (plugin-tooltip), context menu (plugin-selection), link line (plugin-dependencies) */
+.gantt__tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--gk-bg);
+  color: var(--gk-text);
+  border: 1px solid var(--gk-border-strong);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  padding: 6px 10px;
+  font-size: 12px;
+  max-width: 260px;
+  z-index: 5;
+}
+
+.gantt__tooltip-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.gantt__menu {
+  position: absolute;
+  pointer-events: auto;
+  background: var(--gk-bg);
+  color: var(--gk-text);
+  border: 1px solid var(--gk-border-strong);
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  padding: 4px;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.gantt__menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.gantt__menu-item:hover {
+  background: var(--gk-accent);
+  color: #fff;
+}
+
+.gantt__rubber {
+  position: absolute;
+  border: 1px solid var(--gk-accent);
+  background: color-mix(in srgb, var(--gk-accent) 15%, transparent);
+  pointer-events: none;
+}
+
+.gantt__link-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.gantt__link-line {
+  stroke: var(--gk-accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  fill: none;
+}
+
+/* Header */
+.gantt__header {
+  display: flex;
+  border-bottom: 2px solid var(--gk-border);
+  background: var(--gk-header-bg);
+}
+
+.gantt__timeline-header {
+  flex: 1;
+  overflow-x: hidden;
+}
+
+.gantt__bands {
+  display: flex;
+  height: 28px;
+  border-bottom: 1px solid var(--gk-border-strong);
+}
+
+.gantt__band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gk-text-muted);
+  border-right: 1px solid var(--gk-border-strong);
+  text-transform: capitalize;
+  white-space: nowrap;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+.gantt__days {
+  display: flex;
+  height: 32px;
+}
+
+.gantt__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--gk-text-muted);
+  border-right: 1px solid var(--gk-border);
+  box-sizing: border-box;
+}
+
+.gantt__day.is-weekend {
+  background: var(--gk-weekend-bg);
+}
+
+.gantt__day.is-today {
+  background: var(--gk-today-bg);
+  color: var(--gk-today-text);
+  font-weight: 700;
+}
+
+.gantt__day-name {
+  font-size: 8px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.gantt__day-num {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Sidebar */
+.gantt__sidebar {
+  flex-shrink: 0;
+  background: var(--gk-sidebar-bg);
+  border-right: 2px solid var(--gk-border);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+.gantt__sidebar--head {
+  display: flex;
+}
+
+.gantt__sidebar-head {
+  display: flex;
+  min-height: 60px;
+  width: 100%;
+}
+
+.gantt__head-cell {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-weight: 600;
+  border-right: 1px solid var(--gk-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Full-height wrapper for virtualized sidebar rows. */
+.gantt__sidebar-inner {
+  position: relative;
+  width: 100%;
+}
+
+.gantt__row {
+  display: flex;
+  border-bottom: 1px solid var(--gk-border-subtle);
+  background: var(--gk-row-bg);
+}
+
+/* Absolutely-placed row used when the sidebar is virtualized. */
+.gantt__row--abs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+/* Tree expand/collapse chevron in the first sidebar column. */
+.gantt__toggle {
+  flex: 0 0 auto;
+  width: 16px;
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--gk-text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.gantt__toggle:hover {
+  color: var(--gk-text);
+}
+
+.gantt__toggle--spacer {
+  cursor: default;
+}
+
+.gantt__cell-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gantt__cell {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 13px;
+  border-right: 1px solid var(--gk-border-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Body + chart */
+.gantt__body {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.gantt__body.is-panning {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/*
+ * The chart is sized (via the spacer) to the full scene so the body's
+ * scrollbars are correct, but the canvas itself stays viewport-sized and is
+ * repositioned over the visible region on every scroll/resize (a canvas can't
+ * be millions of pixels tall). The renderer sets the canvas left/top/size.
+ */
+.gantt__chart {
+  flex: 1;
+  position: relative;
+}
+
+.gantt__canvas-spacer {
+  /* Block element sized inline to the scene; drives the scroll extent. */
+}
+
+.gantt__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}

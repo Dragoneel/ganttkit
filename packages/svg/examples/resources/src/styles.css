@@ -1,0 +1,59 @@
+/* Assignment bar colours (one per task, applied via `taskClassName`). */
+.gantt-bar.asg--c1 { fill: #93c5fd; stroke: #3b82f6; }
+.gantt-bar.asg--c2 { fill: #c4b5fd; stroke: #8b5cf6; }
+.gantt-bar.asg--c3 { fill: #6ee7b7; stroke: #10b981; }
+.gantt-bar.asg--c4 { fill: #fca5a5; stroke: #ef4444; }
+.gantt-bar.asg--c5 { fill: #fcd34d; stroke: #f59e0b; }
+
+/* Assignment bars are drag targets/handles, so hint the grab cursor. */
+.gantt-scheduling,
+.gantt-scheduling * { cursor: grabbing !important; user-select: none; }
+
+/* Unavailable resource days (non-working weekday or a disabled date): light red. */
+.gantt-unavailable {
+  fill: rgba(239, 68, 68, 0.14);
+  pointer-events: none;
+}
+
+.gantt[data-theme='dark'] .gantt-unavailable {
+  fill: rgba(248, 113, 113, 0.20);
+}
+
+/* Live preview of where a dragged bar will land (drawn in the scene). */
+.gantt-drop-hint {
+  fill: color-mix(in srgb, var(--gk-accent) 18%, transparent);
+  stroke: var(--gk-accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  pointer-events: none;
+}
+
+/* Transient slot preview while dragging (kept for the 'slot' hint kind). */
+.gantt-slot-hint {
+  fill: rgba(16, 185, 129, 0.22);
+  stroke: #10b981;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+/* Selected free slots (rubber-band / ctrl-click), drawn above the lane. */
+.gantt-slot-selected {
+  fill: rgba(16, 185, 129, 0.30);
+  stroke: #10b981;
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+/* Floating label that follows the cursor while dragging. */
+.gantt-drag-ghost {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  padding: 4px 8px;
+  font: 12px/1.2 system-ui, sans-serif;
+  color: #fff;
+  background: #111827;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  white-space: nowrap;
+}

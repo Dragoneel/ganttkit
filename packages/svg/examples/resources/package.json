@@ -1,0 +1,19 @@
+{
+  "name": "@ganttkit/example-svg-resources",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-markers": "workspace:*",
+    "@ganttkit/plugin-scheduler": "workspace:*",
+    "@ganttkit/svg": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

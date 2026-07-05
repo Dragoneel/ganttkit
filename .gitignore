@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+coverage/
+.turbo/
+*.tsbuildinfo
+.vite/
+.nuxt/
+.output/
+.data/
+.history/
+.angular
+.svelte-kit
