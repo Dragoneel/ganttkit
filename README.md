@@ -1,7 +1,7 @@
 # GanttKit
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
+[![Node.js >= 20.12](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
 
 A **framework-agnostic, plugin-driven SVG Gantt chart engine**.
 
