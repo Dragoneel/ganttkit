@@ -11,26 +11,17 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 9.15.4
+      - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.17.0
+          node-version: 20
           cache: 'pnpm'
-
-      - name: Update npm for OIDC trusted publishing support
-        run: npm install -g npm@latest
-
-      - name: Ensure no stale auth token blocks OIDC trusted publishing
-        run: rm -f ~/.npmrc && touch ~/.npmrc
 
       - run: pnpm install --frozen-lockfile
 
@@ -41,4 +32,5 @@ jobs:
         with:
           publish: pnpm changeset:publish
         env:
-          NPM_CONFIG_PROVENANCE: 'true'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
