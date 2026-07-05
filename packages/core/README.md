@@ -6,9 +6,9 @@ framework, no runtime dependencies.
 It owns the data model, time-scale, layout geometry, interaction logic, reactive
 state, and a plugin host  and publishes a declarative **scene** (a list of
 backend-neutral **vector primitives**: rect, line, path, polygon, text) for
-renderers to paint. An SVG renderer ([`@ganttkit/svg`](../svg)) maps each
-primitive to an SVG element; an HTML renderer ([`@ganttkit/html`](../html)) maps
-it to a positioned `<div>`; a canvas renderer ([`@ganttkit/canvas`](../canvas))
+renderers to paint. An SVG renderer ([`@ganttkit/svg`](https://www.npmjs.com/package/@ganttkit/svg)) maps each
+primitive to an SVG element; an HTML renderer ([`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html)) maps
+it to a positioned `<div>`; a canvas renderer ([`@ganttkit/canvas`](https://www.npmjs.com/package/@ganttkit/canvas))
 draws it to a 2D context; the same scene could drive WebGL, PNG, PDF or terminal
 renderers.
 
@@ -147,7 +147,7 @@ gantt.setDateAdapter(createIntlAdapter('de-DE')) // recomputes labels
 
 `createIntlAdapter(locale, { weekStartsOn?, weekend? })` localizes weekday/month
 names and reads first-day-of-week / weekend from the locale (overridable). For
-translatable UI strings too, see [`@ganttkit/plugin-i18n`](../plugin-i18n).
+translatable UI strings too, see [`@ganttkit/plugin-i18n`](https://www.npmjs.com/package/@ganttkit/plugin-i18n).
 
 ## License
 

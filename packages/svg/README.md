@@ -1,9 +1,9 @@
 # @ganttkit/svg
 
-Plain HTML/CSS/JS **SVG** renderer for [`@ganttkit/core`](../core). No framework
+Plain HTML/CSS/JS **SVG** renderer for [`@ganttkit/core`](https://www.npmjs.com/package/@ganttkit/core). No framework
 required. It maps the engine's renderer-agnostic vector primitives 1:1 onto SVG
 elements. For DOM-element or canvas-based alternatives see
-[`@ganttkit/html`](../html) and [`@ganttkit/canvas`](../canvas).
+[`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html) and [`@ganttkit/canvas`](https://www.npmjs.com/package/@ganttkit/canvas).
 
 ```ts
 import { createGantt } from '@ganttkit/svg'
@@ -44,7 +44,7 @@ engine.use(svgRenderer({ target: '#app', theme: 'dark' }))
 ## Sidebar (columns)
 
 The sidebar is a feature plugin, not built in. Install
-[`@ganttkit/plugin-columns`](../plugin-columns); the renderer draws a sidebar
+[`@ganttkit/plugin-columns`](https://www.npmjs.com/package/@ganttkit/plugin-columns); the renderer draws a sidebar
 only when it is present, otherwise the timeline is full-width.
 
 ```ts

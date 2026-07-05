@@ -1,7 +1,7 @@
 # @ganttkit/html
 
-A plain **HTML/CSS/JS** renderer for [GanttKit](../core)  the DOM-twin of
-[`@ganttkit/svg`](../svg).
+A plain **HTML/CSS/JS** renderer for [GanttKit](https://www.npmjs.com/package/@ganttkit/core)  the DOM-twin of
+[`@ganttkit/svg`](https://www.npmjs.com/package/@ganttkit/svg).
 
 Both packages consume the exact same renderer-agnostic **scene** the engine
 produces (a flat list of *vector primitives*: `rect`, `line`, `path`, `polygon`,

@@ -30,6 +30,9 @@ jobs:
       - name: Update npm for OIDC trusted publishing support
         run: npm install -g npm@latest
 
+      - name: Prevent changesets/action from writing a broken auth token
+        run: touch ~/.npmrc
+
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm build

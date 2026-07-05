@@ -1,9 +1,9 @@
 # @ganttkit/canvas
 
-A plain **HTML/CSS/JS** renderer for [GanttKit](../core) that draws the chart
+A plain **HTML/CSS/JS** renderer for [GanttKit](https://www.npmjs.com/package/@ganttkit/core) that draws the chart
 into a single **2D `<canvas>`** the third sibling of
-[`@ganttkit/svg`](../svg) (primitive → SVG element) and
-[`@ganttkit/html`](../html) (primitive → `<div>`).
+[`@ganttkit/svg`](https://www.npmjs.com/package/@ganttkit/svg) (primitive → SVG element) and
+[`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html) (primitive → `<div>`).
 
 All three consume the exact same renderer-agnostic **scene** of vector
 primitives (`rect`, `line`, `path`, `polygon`, `text`), so every feature plugin
