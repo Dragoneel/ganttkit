@@ -2,6 +2,11 @@
   "name": "@ganttkit/plugin-toolbar",
   "version": "0.1.0",
   "description": "View-mode / zoom / today toolbar for GanttKit (UI-slot plugin).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/plugin-toolbar"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

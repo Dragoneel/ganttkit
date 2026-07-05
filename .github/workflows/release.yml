@@ -40,3 +40,5 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm changeset:publish
+        env:
+          NPM_CONFIG_PROVENANCE: 'true'

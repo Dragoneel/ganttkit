@@ -2,6 +2,11 @@
   "name": "@ganttkit/plugin-markers",
   "version": "0.1.0",
   "description": "Vertical date markers and bands for GanttKit (scene-hook plugin).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/plugin-markers"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

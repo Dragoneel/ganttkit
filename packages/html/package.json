@@ -2,6 +2,11 @@
   "name": "@ganttkit/html",
   "version": "0.1.0",
   "description": "Plain HTML/CSS/JS renderer plugin for GanttKit  paints the scene with DOM elements instead of SVG.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/html"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

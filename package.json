@@ -4,6 +4,10 @@
   "author": "dchar",
   "private": true,
   "description": "GanttKit is a framework-agnostic, plugin-driven Gantt chart engine.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git"
+  },
   "type": "module",
   "packageManager": "pnpm@9.15.4",
   "engines": {

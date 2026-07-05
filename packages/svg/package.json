@@ -2,6 +2,11 @@
   "name": "@ganttkit/svg",
   "version": "0.1.0",
   "description": "Plain HTML/CSS/JS SVG renderer plugin for GanttKit.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/svg"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

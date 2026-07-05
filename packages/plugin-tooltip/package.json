@@ -2,6 +2,11 @@
   "name": "@ganttkit/plugin-tooltip",
   "version": "0.1.0",
   "description": "Hover tooltip card for GanttKit tasks (UI-slot plugin).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/plugin-tooltip"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

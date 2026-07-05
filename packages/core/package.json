@@ -2,6 +2,11 @@
   "name": "@ganttkit/core",
   "version": "0.1.1",
   "description": "Headless, framework-agnostic Gantt engine with a plugin host.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/core"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

@@ -2,6 +2,11 @@
   "name": "@ganttkit/plugin-progress",
   "version": "0.1.0",
   "description": "Task progress/completion fill for GanttKit (scene-hook plugin).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/plugin-progress"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {

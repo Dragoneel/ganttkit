@@ -2,6 +2,11 @@
   "name": "@ganttkit/canvas",
   "version": "0.1.0",
   "description": "Plain HTML/CSS/JS canvas renderer plugin for GanttKit  draws the scene into a 2D canvas.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/canvas"
+  },
   "type": "module",
   "license": "MIT",
   "publishConfig": {
