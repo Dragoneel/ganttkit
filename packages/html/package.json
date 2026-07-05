@@ -4,6 +4,9 @@
   "description": "Plain HTML/CSS/JS renderer plugin for GanttKit  paints the scene with DOM elements instead of SVG.",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": [
     "*.css"
   ],

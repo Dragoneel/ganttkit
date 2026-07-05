@@ -4,8 +4,15 @@
   "description": "Plain HTML/CSS/JS SVG renderer plugin for GanttKit.",
   "type": "module",
   "license": "MIT",
-  "sideEffects": ["*.css"],
-  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

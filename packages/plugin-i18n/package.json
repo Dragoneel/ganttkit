@@ -4,6 +4,9 @@
   "description": "Localization for GanttKit  translatable strings + locale dates.",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "files": [
     "dist"
