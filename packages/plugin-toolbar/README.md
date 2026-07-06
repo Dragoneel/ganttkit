@@ -1,13 +1,12 @@
 # @ganttkit/plugin-toolbar
 
 A view-mode / zoom / today toolbar, rendered into the renderer's **toolbar
-slot**. One package, works across svg, html, canvas, vue and nuxt (any renderer that hosts
-UI slots  the bundled ones do).
+slot**. One package, works across svg, html, canvas (any renderer that hosts
+UI slots the bundled ones do).
 
 ```ts
 import { toolbarPlugin } from '@ganttkit/plugin-toolbar'
 engine.use(toolbarPlugin())
-// vue/nuxt: pass via the `plugins` prop
 ```
 
 Controls (all optional): a view-mode segmented control, zoom in/out (steps the

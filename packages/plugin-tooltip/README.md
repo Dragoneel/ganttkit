@@ -1,7 +1,7 @@
 # @ganttkit/plugin-tooltip
 
 A hover card for tasks, rendered into the renderer's **overlay slot** and
-positioned by the pointer. One package, works across svg, html, canvas, vue and nuxt.
+positioned by the pointer. One package, works across svg, html, canvas.
 
 ```ts
 import { tooltipPlugin } from '@ganttkit/plugin-tooltip'

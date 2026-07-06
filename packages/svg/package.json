@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/svg",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "dchar",
   "description": "Plain HTML/CSS/JS SVG renderer plugin for GanttKit.",
   "repository": {
     "type": "git",

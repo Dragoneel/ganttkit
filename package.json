@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/monorepo",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "dchar",
   "author": "dchar",
   "private": true,
   "description": "GanttKit is a framework-agnostic, plugin-driven Gantt chart engine.",

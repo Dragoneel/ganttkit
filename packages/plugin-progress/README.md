@@ -1,7 +1,7 @@
 # @ganttkit/plugin-progress
 
 Draws task completion inside the bars. A scene-hook plugin  pure engine-side,
-so it works with every renderer (svg, html, canvas, vue, nuxt).
+so it works with every renderer (svg, html, canvas).
 
 ```ts
 import { progressPlugin } from '@ganttkit/plugin-progress'

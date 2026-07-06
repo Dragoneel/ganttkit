@@ -17,8 +17,6 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   - **`@ganttkit/svg`**  plain HTML/CSS/JS renderer; maps each primitive to an SVG element.
   - **`@ganttkit/html`**  plain HTML/CSS/JS renderer; maps each primitive to a positioned `<div>`.
   - **`@ganttkit/canvas`**  plain HTML/CSS/JS renderer; draws each primitive to a 2D `<canvas>`.
-  - **`@ganttkit/vue`**  Vue 3 renderer.
-  - **`@ganttkit/nuxt`**  Nuxt module wrapping the Vue renderer (auto-import + SSR).
 - **Feature plugins**  extend behaviour through the plugin API:
   - **`@ganttkit/plugin-columns`**  the sidebar columns (deliberately *not* in
     the core; renderers draw a sidebar only when this is installed).
@@ -74,8 +72,6 @@ See each package's `examples/` directory for runnable demos.
 | [`@ganttkit/svg`](packages/svg) | Vanilla SVG renderer (primitive → SVG element) |
 | [`@ganttkit/html`](packages/html) | Vanilla HTML renderer (primitive → `<div>`) |
 | [`@ganttkit/canvas`](packages/canvas) | Vanilla canvas renderer (primitive → 2D context) |
-| [`@ganttkit/vue`](packages/vue) | Vue 3 renderer |
-| [`@ganttkit/nuxt`](packages/nuxt) | Nuxt module (auto-import + SSR) |
 | [`@ganttkit/plugin-columns`](packages/plugin-columns) | Sidebar columns feature plugin |
 | [`@ganttkit/plugin-filter`](packages/plugin-filter) | Row filtering feature plugin |
 | [`@ganttkit/plugin-progress`](packages/plugin-progress) | Task completion fill |
@@ -99,8 +95,9 @@ service is present. The engine itself knows nothing about columns.
 
 For HTML UI (toolbars, tooltips, menus, rubber-bands) plugins use the **UI slot**
 registry (`ctx.ui`): they render plain DOM into a host the renderer provides, so
-one plugin works across svg/html/canvas/vue/nuxt. See
-[`@ganttkit/core` › UI slots](packages/core#ui-slots-plugin-dom).
+one plugin works across svg/html/canvas/vue/react/...
+
+See [`@ganttkit/core` › UI slots](packages/core#ui-slots-plugin-dom).
 
 ## License
 

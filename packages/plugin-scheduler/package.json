@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/plugin-scheduler",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "dchar",
   "description": "Resource↔task assignment scheduling for GanttKit: resource lanes, cross-chart drag-to-assign, and synced timelines.",
   "repository": {
     "type": "git",

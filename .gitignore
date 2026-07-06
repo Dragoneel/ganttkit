@@ -6,9 +6,9 @@ coverage/
 .turbo/
 *.tsbuildinfo
 .vite/
-.nuxt/
 .output/
 .data/
 .history/
 .angular
 .svelte-kit
+.claude

@@ -12,7 +12,7 @@ const i18n = createI18n({
     fr: { 'view.Day': 'Jour', 'view.Week': 'Semaine', 'view.Month': 'Mois', 'toolbar.today': "Aujourd'hui" },
   },
 })
-engine.use(i18n.plugin)      // vue/nuxt: pass first in the `plugins` prop
+engine.use(i18n.plugin)      
 
 i18n.setLocale('de')         // recomputes dates + re-renders UI strings, no reload
 i18n.t('toolbar.today')      // → translated string (English fallback)

@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/core",
   "version": "0.1.1",
+  "author": "dchar",
   "description": "Headless, framework-agnostic Gantt engine with a plugin host.",
   "repository": {
     "type": "git",

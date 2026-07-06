@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/plugin-columns",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "dchar",
   "description": "Sidebar columns feature plugin for GanttKit.",
   "repository": {
     "type": "git",

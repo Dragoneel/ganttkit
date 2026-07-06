@@ -1,6 +1,7 @@
 {
   "name": "@ganttkit/plugin-dependencies",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "dchar",
   "description": "Dependency editing + finish-to-start auto-scheduling for GanttKit.",
   "repository": {
     "type": "git",

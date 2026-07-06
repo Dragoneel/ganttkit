@@ -5,9 +5,7 @@ export default [
     ignores: [
       '**/node_modules',
       '**/dist',
-      '**/.next',
       '**/build',
-      '**/.nuxt',
       '**/coverage',
       '**/*.d.ts',
       '**/packages/*/src/**', // TypeScript source files need typescript-eslint parser
