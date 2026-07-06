@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js >= 20.12](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
 
-A **framework-agnostic, plugin-driven SVG Gantt chart engine**.
+A **framework-agnostic, plugin-driven Gantt chart engine**.
 
 GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
 
