@@ -2,6 +2,7 @@ import { GanttEngine, buildScene, computeDependencyLinks, computeTaskLayouts } f
 import { svgRenderer } from '@ganttkit/svg'
 import { createColumns } from '@ganttkit/plugin-columns'
 import { createFilter, filters } from '@ganttkit/plugin-filter'
+import { createTree } from '@ganttkit/plugin-tree'
 import '@ganttkit/svg/styles.css'
 import { generateDataset } from './dataset'
 
@@ -62,8 +63,23 @@ function run(rowCount: number, tasksPerRow: number): void {
 
   // 3. Initial paint = renderer attaches and renders the SVG + sidebar.
   const initPaint = time(() => {
-    e.use(svgRenderer({ target: app }))
-    e.use(createColumns({ sidebarWidth: 220, columns: [{ key: 'id', label: 'Code' }, { key: 'name', label: 'Name' }] }).plugin)
+    // Custom chevron: inline SVG icons (currentColor inherits the toggle color).
+    const chevron = (d: string) =>
+      `<svg viewBox="0 0 10 10" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`
+    e.use(svgRenderer({
+      target: app,
+      chevron: { collapsed: chevron('M3 1 L7 5 L3 9'), expanded: chevron('M1 3 L5 7 L9 3') },
+    }))
+    // Hierarchical rows (parent "code" groups → resource children).
+    e.use(createTree().plugin)
+    // Code is the second column, and hosts the tree chevron via `treeColumn`.
+    // Columns are resizable (drag a header edge) and widths persist in localStorage.
+    e.use(createColumns({
+      sidebarWidth: 260,
+      treeColumn: 'id',
+      persistWidths: 'ganttkit-stress-columns',
+      columns: [{ key: 'name', label: 'Name' }, { key: 'id', label: 'Code' }],
+    }).plugin)
   })
   engine = e
 

@@ -17,7 +17,7 @@ import { GanttEngine } from '@ganttkit/core'
 import { CanvasRenderer, type CanvasRendererOptions } from './renderer'
 
 export { CanvasRenderer } from './renderer'
-export type { CanvasRendererOptions } from './renderer'
+export type { CanvasRendererOptions, ChevronContent, ChevronOption } from './renderer'
 
 /** A GanttKit plugin that renders the chart into a DOM element using canvas. */
 export function canvasRenderer(options: CanvasRendererOptions): GanttPlugin {
@@ -42,8 +42,8 @@ export type CreateGanttOptions = GanttOptions & CanvasRendererOptions
  * Returns the engine so you can call `setRows`, `use(...)` more plugins, etc.
  */
 export function createGantt(options: CreateGanttOptions): GanttEngine {
-  const { target, theme, enableZoom, enablePan, ...engineOptions } = options
+  const { target, theme, enableZoom, enablePan, chevron, ...engineOptions } = options
   const engine = new GanttEngine(engineOptions)
-  engine.use(canvasRenderer({ target, theme, enableZoom, enablePan }))
+  engine.use(canvasRenderer({ target, theme, enableZoom, enablePan, chevron }))
   return engine
 }

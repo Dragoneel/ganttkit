@@ -11,7 +11,8 @@
     "@ganttkit/core": "workspace:*",
     "@ganttkit/html": "workspace:*",
     "@ganttkit/plugin-columns": "workspace:*",
-    "@ganttkit/plugin-filter": "workspace:*"
+    "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*"
   },
   "devDependencies": {
     "vite": "^6.0.0"

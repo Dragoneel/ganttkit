@@ -109,6 +109,9 @@ importers:
       '@ganttkit/plugin-filter':
         specifier: workspace:*
         version: link:../../../plugin-filter
+      '@ganttkit/plugin-tree':
+        specifier: workspace:*
+        version: link:../../../plugin-tree
     devDependencies:
       vite:
         specifier: ^6.0.0
@@ -199,6 +202,9 @@ importers:
       '@ganttkit/plugin-filter':
         specifier: workspace:*
         version: link:../../../plugin-filter
+      '@ganttkit/plugin-tree':
+        specifier: workspace:*
+        version: link:../../../plugin-tree
     devDependencies:
       vite:
         specifier: ^6.0.0
@@ -473,6 +479,9 @@ importers:
       '@ganttkit/plugin-filter':
         specifier: workspace:*
         version: link:../../../plugin-filter
+      '@ganttkit/plugin-tree':
+        specifier: workspace:*
+        version: link:../../../plugin-tree
       '@ganttkit/svg':
         specifier: workspace:*
         version: link:../..

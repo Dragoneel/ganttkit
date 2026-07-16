@@ -29,7 +29,33 @@ interface SidebarProvider {
   getSidebarWidth: () => number
   getCellValue: (row: GanttRow, columnKey: string) => string
   getRowIndent: (row: GanttRow) => number
+  /** Key of the column that hosts the tree chevron. Optional for back-compat. */
+  getTreeColumnKey?: () => string | undefined
+  /** Whether a column may be resized. Optional for back-compat. */
+  isColumnResizable?: (key: string) => boolean
+  /** Minimum column width in px. Optional for back-compat. */
+  getMinColumnWidth?: () => number
+  /** Commit a resized column width. Optional for back-compat. */
+  setColumnWidth?: (key: string, width: number) => void
 }
+
+/**
+ * Content for a tree chevron: a markup string (plain text/emoji, an inline
+ * `<svg>…</svg>`, or an `<img src>`), or a DOM node built by the caller. Nodes
+ * are cloned per row, so a single node may be reused across rows.
+ */
+export type ChevronContent = string | Node
+
+/**
+ * Customize the tree chevron. Either fixed content for the two states, or a
+ * function invoked per tree row (e.g. to vary the icon by level or row data).
+ */
+export type ChevronOption =
+  | { collapsed: ChevronContent, expanded: ChevronContent }
+  | ((state: { expanded: boolean, row: GanttRow }) => ChevronContent)
+
+/** Default chevron: unicode triangles, matching the shipped stylesheet. */
+const DEFAULT_CHEVRON = { collapsed: '▸', expanded: '▾' }
 
 export interface SvgRendererOptions {
   /** Element (or selector) to render into. */
@@ -40,6 +66,12 @@ export interface SvgRendererOptions {
   enableZoom?: boolean
   /** Enable click-drag panning of the chart body. Default `true`. */
   enablePan?: boolean
+  /**
+   * Custom tree expand/collapse chevron. Accepts a markup string (text, emoji,
+   * inline SVG or an `<img>`) or a DOM node, either as fixed collapsed/expanded
+   * content or a per-row function. Defaults to `▸`/`▾`.
+   */
+  chevron?: ChevronOption
 }
 
 /**
@@ -75,6 +107,7 @@ export class SvgRenderer {
     this.opts = {
       enableZoom: options.enableZoom ?? true,
       enablePan: options.enablePan ?? true,
+      chevron: options.chevron ?? DEFAULT_CHEVRON,
     }
     const target = typeof options.target === 'string'
       ? document.querySelector<HTMLElement>(options.target)
@@ -252,12 +285,20 @@ export class SvgRenderer {
       this.sidebarHeadEl.style.display = ''
       this.sidebarHeadEl.style.width = `${sidebar.getSidebarWidth()}px`
       const headRow = h('div', 'gantt__sidebar-head')
-      for (const col of sidebar.getColumns()) {
+      sidebar.getColumns().forEach((col, ci) => {
         const cell = h('div', 'gantt__head-cell')
         cell.style.width = `${col.width}px`
-        cell.textContent = col.label
+        const label = h('span', 'gantt__head-label')
+        label.textContent = col.label
+        cell.appendChild(label)
+        // Draggable edge to resize the column (when the model allows it).
+        if (sidebar.isColumnResizable?.(col.key) && sidebar.setColumnWidth) {
+          const handle = h('div', 'gantt__col-resize')
+          handle.addEventListener('mousedown', e => this.onColumnResizeStart(e, ci))
+          cell.appendChild(handle)
+        }
         headRow.appendChild(cell)
-      }
+      })
       this.sidebarHeadEl.replaceChildren(headRow)
     }
     else {
@@ -305,6 +346,9 @@ export class SvgRenderer {
 
     const rows = engine.getRows()
     const columns = sidebar.getColumns()
+    // Which column carries the tree chevron/indentation. Falls back to the
+    // first column when the provider doesn't specify one.
+    const treeKey = sidebar.getTreeColumnKey?.() ?? columns[0]?.key
     const { rowHeight } = engine.getOptions()
     const win = engine.getWindow()
     const start = win ? win.rowStart : 0
@@ -323,13 +367,16 @@ export class SvgRenderer {
       const rowEl = h('div', 'gantt__row gantt__row--abs')
       rowEl.style.top = `${i * rowHeight}px`
       rowEl.style.height = `${rowHeight}px`
-      columns.forEach((col, ci) => {
+      columns.forEach((col) => {
         const cell = h('div', 'gantt__cell')
         cell.style.width = `${col.width}px`
         const value = sidebar.getCellValue(row, col.key)
-        if (ci === 0) {
-          // First column: optional tree chevron + indentation, then the value.
-          cell.style.paddingLeft = `${sidebar.getRowIndent(row)}px`
+        if (col.key === treeKey) {
+          // Tree column: optional tree chevron + indentation, then the value.
+          // Indent is added on top of the cell's base padding (see CSS), so
+          // level-0 rows still align with the other columns.
+          cell.classList.add('gantt__cell--tree')
+          cell.style.setProperty('--gk-indent', `${sidebar.getRowIndent(row)}px`)
           const isTreeRow = row.hasChildren === true || (row.level ?? 0) > 0
           if (isTreeRow)
             cell.appendChild(this.buildToggle(row))
@@ -348,19 +395,85 @@ export class SvgRenderer {
     this.sidebarInner.replaceChildren(frag)
   }
 
-  /** Tree chevron (or aligned spacer) for the first sidebar column. */
+  /** Tree chevron (or aligned spacer) for the tree column. */
   private buildToggle(row: GanttRow): HTMLElement {
     if (row.hasChildren !== true) {
       const spacer = h('span', 'gantt__toggle gantt__toggle--spacer')
       return spacer
     }
     const toggle = h('span', 'gantt__toggle')
-    toggle.textContent = row.expanded === false ? '▸' : '▾'
+    this.fillChevron(toggle, row)
     toggle.addEventListener('click', (event) => {
       event.stopPropagation()
       this.ctx.events.emit('row:toggle', { rowId: row.id })
     })
     return toggle
+  }
+
+  /** Render the configured chevron content into `el` for a tree row. */
+  private fillChevron(el: HTMLElement, row: GanttRow): void {
+    const expanded = row.expanded !== false
+    const opt = this.opts.chevron
+    let content = typeof opt === 'function'
+      ? opt({ expanded, row })
+      : (expanded ? opt.expanded : opt.collapsed)
+    // Defensive: a config/function that yields no usable content falls back to
+    // the default glyph instead of throwing.
+    if (typeof content !== 'string' && !(content instanceof Node))
+      content = expanded ? DEFAULT_CHEVRON.expanded : DEFAULT_CHEVRON.collapsed
+    if (typeof content === 'string')
+      el.innerHTML = content
+    else
+      el.appendChild(content.cloneNode(true))
+  }
+
+  /** Begin a header-edge drag to resize the column at `index`. */
+  private onColumnResizeStart(event: MouseEvent, index: number): void {
+    const sidebar = this.sidebar
+    if (!sidebar?.setColumnWidth)
+      return
+    const cols = sidebar.getColumns()
+    const col = cols[index]
+    if (!col)
+      return
+    event.preventDefault()
+    event.stopPropagation()
+
+    const startX = event.clientX
+    const startWidth = col.width
+    const min = sidebar.getMinColumnWidth?.() ?? 48
+    // Width of every other column stays fixed during the drag; only this one moves.
+    const others = cols.reduce((sum, c, i) => (i === index ? sum : sum + c.width), 0)
+    let width = startWidth
+    this.root.classList.add('is-col-resizing')
+
+    const onMove = (e: MouseEvent) => {
+      width = Math.max(min, startWidth + (e.clientX - startX))
+      this.previewColumnWidth(index, width, others + width)
+    }
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseup', onUp)
+      this.root.classList.remove('is-col-resizing')
+      // Commit once: updates the model, persists, and triggers a single repaint.
+      sidebar.setColumnWidth!(col.key, width)
+    }
+    document.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseup', onUp)
+  }
+
+  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  private previewColumnWidth(index: number, width: number, total: number): void {
+    const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
+    if (headCell)
+      headCell.style.width = `${width}px`
+    this.sidebarHeadEl.style.width = `${total}px`
+    this.sidebarBodyEl.style.width = `${total}px`
+    for (const row of this.sidebarInner.children) {
+      const cell = (row as HTMLElement).children[index] as HTMLElement | undefined
+      if (cell)
+        cell.style.width = `${width}px`
+    }
   }
 
   private paint(scene: Scene): void {

@@ -325,6 +325,7 @@
 }
 
 .gantt__head-cell {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -334,6 +335,36 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
+}
+
+/* Column label; shrinks with ellipsis so the resize handle stays reachable. */
+.gantt__head-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Draggable right edge for resizing a column. */
+.gantt__col-resize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 100%;
+  cursor: col-resize;
+  user-select: none;
+}
+
+.gantt__col-resize:hover {
+  background: var(--gk-border-strong);
+}
+
+/* While dragging a column edge: keep the resize cursor and suppress selection. */
+.gantt.is-col-resizing {
+  cursor: col-resize;
+  user-select: none;
 }
 
 /* Full-height wrapper for virtualized sidebar rows. */
@@ -356,7 +387,7 @@
   box-sizing: border-box;
 }
 
-/* Tree expand/collapse chevron in the first sidebar column. */
+/* Tree expand/collapse chevron in the tree column. */
 .gantt__toggle {
   flex: 0 0 auto;
   width: 16px;
@@ -394,6 +425,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
+}
+
+/* Tree column: keep the base padding and add per-level indentation on top. */
+.gantt__cell--tree {
+  padding-left: calc(16px + var(--gk-indent, 0px));
 }
 
 /* Body + chart */

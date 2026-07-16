@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-tree",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "dchar",
   "description": "Hierarchical rows with expand/collapse for GanttKit (rows-hook plugin).",
   "repository": {

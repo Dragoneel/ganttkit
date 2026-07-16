@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-markers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "dchar",
   "description": "Vertical date markers and bands for GanttKit (scene-hook plugin).",
   "repository": {

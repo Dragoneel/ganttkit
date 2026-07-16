@@ -11,6 +11,7 @@
     "@ganttkit/core": "workspace:*",
     "@ganttkit/plugin-columns": "workspace:*",
     "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*",
     "@ganttkit/svg": "workspace:*"
   },
   "devDependencies": {

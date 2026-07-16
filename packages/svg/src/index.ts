@@ -15,7 +15,7 @@ import { GanttEngine } from '@ganttkit/core'
 import { SvgRenderer, type SvgRendererOptions } from './renderer'
 
 export { SvgRenderer } from './renderer'
-export type { SvgRendererOptions } from './renderer'
+export type { ChevronContent, ChevronOption, SvgRendererOptions } from './renderer'
 
 /** A GanttKit plugin that renders the chart into a DOM element as SVG. */
 export function svgRenderer(options: SvgRendererOptions): GanttPlugin {
@@ -40,8 +40,8 @@ export type CreateGanttOptions = GanttOptions & SvgRendererOptions
  * Returns the engine so you can call `setRows`, `use(...)` more plugins, etc.
  */
 export function createGantt(options: CreateGanttOptions): GanttEngine {
-  const { target, theme, enableZoom, enablePan, ...engineOptions } = options
+  const { target, theme, enableZoom, enablePan, chevron, ...engineOptions } = options
   const engine = new GanttEngine(engineOptions)
-  engine.use(svgRenderer({ target, theme, enableZoom, enablePan }))
+  engine.use(svgRenderer({ target, theme, enableZoom, enablePan, chevron }))
   return engine
 }

@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-baseline",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "dchar",
   "description": "Planned-vs-actual baseline bars for GanttKit (scene-hook plugin).",
   "repository": {
