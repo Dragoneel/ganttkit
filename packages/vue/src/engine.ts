@@ -56,6 +56,7 @@ export function createEngine(target: HTMLElement, options: GanttChartOptions): G
  */
 export function rebuildKey(options: GanttChartOptions): string {
   return JSON.stringify([
+    identityKey(options.renderer),
     options.rowHeight,
     options.dayWidth,
     options.barPadding,
@@ -75,6 +76,27 @@ function dateKey(value: DateInput | null | undefined): string | number | null {
   if (value == null)
     return null
   return value instanceof Date ? value.getTime() : value
+}
+
+/**
+ * Stable ids for build options JSON cannot represent. `JSON.stringify` turns a
+ * function into `null`, so without this the renderer would be invisible to the
+ * key and swapping it would leave the old renderer painting.
+ *
+ * Weak, so keeping an id costs nothing once the value is unreachable.
+ */
+const identities = new WeakMap<object, number>()
+let nextIdentity = 0
+
+function identityKey(value: object | null | undefined): number | null {
+  if (value == null)
+    return null
+  let id = identities.get(value)
+  if (id === undefined) {
+    id = ++nextIdentity
+    identities.set(value, id)
+  }
+  return id
 }
 
 /** Push `rows` into the engine, skipping the recompute when they are unchanged. */
