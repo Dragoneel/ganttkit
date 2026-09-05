@@ -2,12 +2,12 @@
 
 React 19 bindings for [GanttKit](https://www.npmjs.com/package/@ganttkit/core).
 
-This is a binding, not a fourth renderer. The chart is painted by
-[`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html), which maps the
-engine's scene of vector primitives onto positioned `<div>`s; this package only
-owns that renderer's lifetime and wires it to React's. Every feature plugin
-(columns, tree, dependencies, markers, tooltip, selection, i18n, ...) works
-unchanged, because none of them know a framework is involved.
+This is a binding, not a fourth renderer. The chart is painted by one of the
+three base renderers - [`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html)
+by default - and this package only owns that renderer's lifetime and wires it to
+React's. Every feature plugin (columns, tree, dependencies, markers, tooltip,
+selection, i18n, ...) works unchanged, because none of them know a framework is
+involved.
 
 ## Install
 
@@ -47,21 +47,60 @@ export function Chart() {
 The root element needs a height. `className` and `style` are passed to it, and
 the renderer adds its own `gantt` class on top.
 
+## Choosing a renderer
+
+The chart is painted by `@ganttkit/html` unless you say otherwise. Pass
+`renderer` to paint with SVG or canvas instead, and import that package's
+stylesheet rather than `@ganttkit/react/styles.css`:
+
+```tsx
+import { GanttChart } from '@ganttkit/react'
+import { canvasRenderer } from '@ganttkit/canvas'
+import '@ganttkit/canvas/styles.css'
+
+<GanttChart renderer={canvasRenderer} rows={rows} style={{ height: '70vh' }} />
+```
+
+| Renderer | Package | Stylesheet | Paints each primitive as |
+| --- | --- | --- | --- |
+| `htmlRenderer` (default) | `@ganttkit/html` | `@ganttkit/react/styles.css` | a positioned `<div>` |
+| `svgRenderer` | `@ganttkit/svg` | `@ganttkit/svg/styles.css` | an SVG element |
+| `canvasRenderer` | `@ganttkit/canvas` | `@ganttkit/canvas/styles.css` | a draw call on one 2D canvas |
+
+`@ganttkit/svg` and `@ganttkit/canvas` are optional peers - install the one you
+use. `@ganttkit/react/styles.css` re-exports the HTML sheet only, because it is
+the only renderer this package depends on; for the other two, import the
+stylesheet from the same package you import the renderer from.
+
+Anything matching `RendererFactory` works, so a custom renderer drops in the
+same way:
+
+```ts
+import type { GanttPlugin, RendererOptions } from '@ganttkit/core'
+
+const myRenderer = (options: RendererOptions): GanttPlugin => ({ ... })
+```
+
+`renderer` is a rebuild prop: swapping it tears the engine down and builds a
+fresh one with the new renderer.
+
 ## Props
 
 Every [`GanttOptions`](https://www.npmjs.com/package/@ganttkit/core) field, plus
-`theme`, `enableZoom`, `enablePan`, `chevron` and `plugins`.
+`renderer`, `theme`, `enableZoom`, `enablePan`, `chevron` and `plugins`.
 
 They fall into three groups, which is the whole reactivity contract:
 
 | Group | Props | Behaviour on change |
 | --- | --- | --- |
 | Live | `rows`, `viewMode`, `theme`, `dateAdapter` | pushed into the running engine |
-| Rebuild | `rowHeight`, `dayWidth`, `barPadding`, `highlightToday`, `draggable`, `virtualize`, `overscanRows`, `overscanCols`, `startDate`, `endDate`, `enableZoom`, `enablePan` | the engine is torn down and rebuilt |
+| Rebuild | `renderer`, `rowHeight`, `dayWidth`, `barPadding`, `highlightToday`, `draggable`, `virtualize`, `overscanRows`, `overscanCols`, `startDate`, `endDate`, `enableZoom`, `enablePan` | the engine is torn down and rebuilt |
 | Read once | `plugins`, `chevron` | read when the engine is built |
 
 Rebuilds key off the option *values*, not object identity, so a re-render with
-the same numbers never rebuilds. `plugins` is read once, so an inline array is
+the same numbers never rebuilds. `renderer` is the exception: a function has no
+value to compare, so it keys off identity - hoist it out of the component or
+memoize it. `plugins` is read once, so an inline array is
 safe too - but keep the plugin instances stable if you want their state (a
 tree's collapsed set, a filter's predicate) to survive a rebuild.
 

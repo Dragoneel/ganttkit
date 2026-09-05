@@ -17,8 +17,10 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   - **`@ganttkit/svg`**  plain HTML/CSS/JS renderer; maps each primitive to an SVG element.
   - **`@ganttkit/html`**  plain HTML/CSS/JS renderer; maps each primitive to a positioned `<div>`.
   - **`@ganttkit/canvas`**  plain HTML/CSS/JS renderer; draws each primitive to a 2D `<canvas>`.
-- **Framework bindings**  thin components over `@ganttkit/html`; they own the
-  renderer's lifetime and bind it to the framework's reactivity, nothing more:
+- **Framework bindings**  thin components over a base renderer; they own the
+  renderer's lifetime and bind it to the framework's reactivity, nothing more.
+  Each takes a `renderer` option, so the choice of SVG, HTML or canvas is the
+  caller's, not the binding's:
   - **`@ganttkit/vue`**  a `<GanttChart>` component for Vue 3.
   - **`@ganttkit/react`**  a `<GanttChart>` component for React 19.
   - **`@ganttkit/angular`**  a `<gantt-chart>` standalone component for Angular.
@@ -77,9 +79,9 @@ See each package's `examples/` directory for runnable demos.
 | [`@ganttkit/svg`](packages/svg) | Vanilla SVG renderer (primitive → SVG element) |
 | [`@ganttkit/html`](packages/html) | Vanilla HTML renderer (primitive → `<div>`) |
 | [`@ganttkit/canvas`](packages/canvas) | Vanilla canvas renderer (primitive → 2D context) |
-| [`@ganttkit/vue`](packages/vue) | Vue 3 component over the HTML renderer |
-| [`@ganttkit/react`](packages/react) | React 19 component over the HTML renderer |
-| [`@ganttkit/angular`](packages/angular) | Angular component over the HTML renderer |
+| [`@ganttkit/vue`](packages/vue) | Vue 3 component over any base renderer |
+| [`@ganttkit/react`](packages/react) | React 19 component over any base renderer |
+| [`@ganttkit/angular`](packages/angular) | Angular component over any base renderer |
 | [`@ganttkit/plugin-columns`](packages/plugin-columns) | Sidebar columns feature plugin |
 | [`@ganttkit/plugin-filter`](packages/plugin-filter) | Row filtering feature plugin |
 | [`@ganttkit/plugin-progress`](packages/plugin-progress) | Task completion fill |
@@ -92,6 +94,55 @@ See each package's `examples/` directory for runnable demos.
 | [`@ganttkit/plugin-selection`](packages/plugin-selection) | Select / rubber-band / context menu |
 | [`@ganttkit/plugin-i18n`](packages/plugin-i18n) | Localized dates + translatable strings |
 | [`@ganttkit/plugin-scheduler`](packages/plugin-scheduler) | Resource↔task assignment scheduling (drag-to-assign, synced charts) |
+
+## Choosing a renderer
+
+The three base renderers consume the identical scene, so they are drop-in swaps
+for one another. Vanilla callers pick one by importing from that package:
+
+```ts
+import { createGantt } from '@ganttkit/canvas'
+import '@ganttkit/canvas/styles.css'
+
+const gantt = createGantt({ target: '#app', rows })
+```
+
+The framework bindings take the renderer as an option instead, defaulting to
+`@ganttkit/html`:
+
+```vue
+<script setup lang="ts">
+import { GanttChart } from '@ganttkit/vue'
+import { canvasRenderer } from '@ganttkit/canvas'
+import '@ganttkit/canvas/styles.css'
+</script>
+
+<template>
+  <GanttChart :renderer="canvasRenderer" :rows="rows" style="height: 70vh" />
+</template>
+```
+
+| Renderer | Package | Paints each primitive as | Suits |
+| --- | --- | --- | --- |
+| `htmlRenderer` (default) | `@ganttkit/html` | a positioned `<div>` | styling with plain CSS, DOM inspection, accessibility hooks |
+| `svgRenderer` | `@ganttkit/svg` | an SVG element | crisp vector output, export to file, CSS-styled shapes |
+| `canvasRenderer` | `@ganttkit/canvas` | a draw call on one 2D canvas | the largest datasets, where a node per primitive is the bottleneck |
+
+Each ships its own stylesheet - import the one matching the renderer you chose.
+`@ganttkit/svg` and `@ganttkit/canvas` are optional peers of the bindings, so
+install the one you use; `@ganttkit/html` comes with them.
+
+The contract is a plugin factory, `RendererFactory` in `@ganttkit/core`, so a
+custom renderer is accepted everywhere the shipped three are:
+
+```ts
+import type { GanttPlugin, RendererOptions } from '@ganttkit/core'
+
+const myRenderer = (options: RendererOptions): GanttPlugin => ({
+  name: 'my-renderer',
+  install(ctx) { /* subscribe to ctx.events, paint ctx.engine.getScene() */ },
+})
+```
 
 ## Extending: services
 

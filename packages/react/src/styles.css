@@ -1,6 +1,12 @@
 /*
- * The chart itself is painted by @ganttkit/html, so its stylesheet is the one
- * that matters. This file only re-exports it, letting apps import the CSS from
- * the same package they import the component from.
+ * The default stylesheet, and the one to import unless you pass a `renderer`:
+ * the chart is painted by @ganttkit/html out of the box, so this re-exports
+ * that renderer's CSS from the same package as the component.
+ *
+ * Painting with another base renderer? Import its stylesheet from its own
+ * package - `@ganttkit/svg/styles.css` or `@ganttkit/canvas/styles.css` - the
+ * same package you import the renderer itself from. Re-exporting them from
+ * here would not work: they are optional peers, so under pnpm's strict layout
+ * this package cannot resolve them even when the app has installed them.
  */
 @import '@ganttkit/html/styles.css';

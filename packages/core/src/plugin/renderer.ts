@@ -3,7 +3,7 @@ import type { GanttPlugin } from '../engine-types'
 
 /**
  * Content for a tree chevron: a markup string (plain text/emoji, an inline
- * `<svg>…</svg>`, or an `<img src>`), or a DOM node built by the caller. Nodes
+ * `<svg>...</svg>`, or an `<img src>`), or a DOM node built by the caller. Nodes
  * are cloned per row, so a single node may be reused across rows.
  */
 export type ChevronContent = string | Node
