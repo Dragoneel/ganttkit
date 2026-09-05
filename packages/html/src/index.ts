@@ -17,7 +17,10 @@ import { GanttEngine } from '@ganttkit/core'
 import { HtmlRenderer, type HtmlRendererOptions } from './renderer'
 
 export { HtmlRenderer } from './renderer'
-export type { ChevronContent, ChevronOption, HtmlRendererOptions } from './renderer'
+export type { HtmlRendererOptions } from './renderer'
+// The chevron contract now lives in core, so every renderer shares one
+// definition. Re-exported here for back-compat.
+export type { ChevronContent, ChevronOption, RendererOptions } from '@ganttkit/core'
 
 /** A GanttKit plugin that renders the chart into a DOM element using HTML. */
 export function htmlRenderer(options: HtmlRendererOptions): GanttPlugin {

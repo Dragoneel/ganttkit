@@ -1,9 +1,12 @@
 /**
  * @ganttkit/vue - Vue 3 bindings for GanttKit.
  *
- * A thin component over `@ganttkit/html`: the engine and the DOM renderer do
- * all the work, and this package only binds them to Vue's lifecycle and
+ * A thin component over a base renderer: the engine and the renderer do all
+ * the work, and this package only binds them to Vue's lifecycle and
  * reactivity, so every feature plugin works unchanged.
+ *
+ * `@ganttkit/html` is the default. Pass `renderer` to paint with
+ * `@ganttkit/svg` or `@ganttkit/canvas` instead.
  *
  * ```vue
  * <script setup lang="ts">

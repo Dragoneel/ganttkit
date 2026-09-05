@@ -1,17 +1,18 @@
 import type { PropType } from 'vue'
 import { defineComponent, h, ref } from 'vue'
 import type {
+  ChevronOption,
   DateAdapter,
   DateInput,
   GanttEngine,
   GanttPlugin,
   GanttRow,
+  RendererFactory,
   TaskDragEvent,
   TaskHoverEvent,
   TaskPointerEvent,
   ViewMode,
 } from '@ganttkit/core'
-import type { ChevronOption } from '@ganttkit/html'
 import { useGantt } from './use-gantt'
 
 /**
@@ -20,6 +21,9 @@ import { useGantt } from './use-gantt'
  * ```vue
  * <GanttChart v-model:view-mode="mode" :rows="rows" :plugins="plugins" style="height: 70vh" />
  * ```
+ *
+ * Paints with the HTML renderer by default; pass `:renderer="svgRenderer"` or
+ * `:renderer="canvasRenderer"` (plus that package's stylesheet) to switch.
  *
  * The component owns one engine. `rows`, `view-mode`, `theme` and
  * `date-adapter` are applied to the live engine; any other option is only read
@@ -55,6 +59,12 @@ export const GanttChart = defineComponent({
     enableZoom: { type: Boolean, default: undefined },
     /** Click-drag the chart body to pan. Default `true`. */
     enablePan: { type: Boolean, default: undefined },
+    /**
+     * Base renderer: `htmlRenderer` (the default), `svgRenderer` or
+     * `canvasRenderer`. Import the matching stylesheet for the one you pick.
+     * Read once, when the engine is built.
+     */
+    renderer: { type: Function as PropType<RendererFactory>, default: undefined },
     /** Custom tree chevron. Read once, when the engine is built. */
     chevron: { type: [Object, Function] as PropType<ChevronOption>, default: undefined },
     /** Feature plugins. Read once, when the engine is built. */

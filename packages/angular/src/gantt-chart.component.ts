@@ -12,17 +12,18 @@ import {
   untracked,
 } from '@angular/core'
 import type {
+  ChevronOption,
   DateAdapter,
   DateInput,
   GanttEngine,
   GanttPlugin,
   GanttRow,
+  RendererFactory,
   TaskDragEvent,
   TaskHoverEvent,
   TaskPointerEvent,
   ViewMode,
 } from '@ganttkit/core'
-import type { ChevronOption } from '@ganttkit/html'
 import type { GanttChartOptions } from './engine.js'
 import { createEngine, rebuildKey, syncRows, syncTheme, syncViewMode } from './engine.js'
 
@@ -32,6 +33,9 @@ import { createEngine, rebuildKey, syncRows, syncTheme, syncViewMode } from './e
  * ```html
  * <gantt-chart [rows]="rows()" viewMode="Week" (taskClick)="onClick($event)" />
  * ```
+ *
+ * Paints with the HTML renderer by default; pass `[renderer]="svgRenderer"` or
+ * `[renderer]="canvasRenderer"` (plus that package's stylesheet) to switch.
  *
  * The component owns one engine. `rows`, `viewMode`, `theme` and `dateAdapter`
  * are applied to the live engine; any other input is only read when the engine
@@ -73,6 +77,12 @@ export class GanttChartComponent implements OnDestroy {
   readonly enableZoom = input<boolean>()
   /** Click-drag the chart body to pan. Default `true`. */
   readonly enablePan = input<boolean>()
+  /**
+   * Base renderer: `htmlRenderer` (the default), `svgRenderer` or
+   * `canvasRenderer`. Import the matching stylesheet for the one you pick.
+   * Read once, when the engine is built.
+   */
+  readonly renderer = input<RendererFactory>()
   /** Custom tree chevron. Read once, when the engine is built. */
   readonly chevron = input<ChevronOption>()
   /** Feature plugins. Read once, when the engine is built. */
@@ -111,6 +121,7 @@ export class GanttChartComponent implements OnDestroy {
     endDate: this.endDate(),
     enableZoom: this.enableZoom(),
     enablePan: this.enablePan(),
+    renderer: this.renderer(),
   }))
 
   private readonly buildKey = computed(() => rebuildKey(this.buildOptions()))

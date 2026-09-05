@@ -37,7 +37,17 @@
     "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {
-    "vue": "^3.5.0"
+    "vue": "^3.5.0",
+    "@ganttkit/svg": "workspace:*",
+    "@ganttkit/canvas": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@ganttkit/svg": {
+      "optional": true
+    },
+    "@ganttkit/canvas": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@ganttkit/core": "workspace:*",

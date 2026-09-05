@@ -1,16 +1,31 @@
-import type { DateInput, GanttOptions, GanttPlugin, GanttRow, ViewMode } from '@ganttkit/core'
+import type {
+  ChevronOption,
+  DateInput,
+  GanttOptions,
+  GanttPlugin,
+  GanttRow,
+  RendererFactory,
+  ViewMode,
+} from '@ganttkit/core'
 import { GanttEngine } from '@ganttkit/core'
-import type { ChevronOption } from '@ganttkit/html'
 import { htmlRenderer } from '@ganttkit/html'
 
 /**
- * Everything the wrapper accepts: the headless engine options, the HTML
+ * Everything the wrapper accepts: the headless engine options, the base
  * renderer's own options, and the feature plugins to install on top.
  *
  * Nothing here is framework-specific - the component and the composable/hook
  * in this package are thin bindings over these helpers.
  */
 export interface GanttChartOptions extends GanttOptions {
+  /**
+   * Base renderer to paint with: `htmlRenderer` (the default),
+   * `svgRenderer` or `canvasRenderer`. Anything matching `RendererFactory`
+   * works, so a custom renderer drops in the same way.
+   *
+   * Each renderer ships its own stylesheet - import the one you pick.
+   */
+  renderer?: RendererFactory
   /** Initial theme. Kept in sync with the root element's `data-theme`. */
   theme?: 'light' | 'dark'
   /** Enable ctrl/cmd + wheel to change view mode. Default `true`. */
@@ -23,11 +38,11 @@ export interface GanttChartOptions extends GanttOptions {
   plugins?: GanttPlugin[]
 }
 
-/** Build an engine, attach the HTML renderer to `target`, install the plugins. */
+/** Build an engine, attach the chosen renderer to `target`, install the plugins. */
 export function createEngine(target: HTMLElement, options: GanttChartOptions): GanttEngine {
-  const { theme, enableZoom, enablePan, chevron, plugins, ...engineOptions } = options
+  const { renderer = htmlRenderer, theme, enableZoom, enablePan, chevron, plugins, ...engineOptions } = options
   const engine = new GanttEngine(engineOptions)
-  engine.use(htmlRenderer({ target, theme, enableZoom, enablePan, chevron }))
+  engine.use(renderer({ target, theme, enableZoom, enablePan, chevron }))
   for (const plugin of plugins ?? [])
     engine.use(plugin)
   return engine

@@ -1,9 +1,12 @@
 /**
  * @ganttkit/angular - Angular bindings for GanttKit.
  *
- * A thin standalone component over `@ganttkit/html`: the engine and the DOM
+ * A thin standalone component over a base renderer: the engine and the
  * renderer do all the work, and this package only binds them to Angular's
  * signals and lifecycle, so every feature plugin works unchanged.
+ *
+ * `@ganttkit/html` is the default. Pass `renderer` to paint with
+ * `@ganttkit/svg` or `@ganttkit/canvas` instead.
  *
  * ```ts
  * import { GanttChartComponent } from '@ganttkit/angular'
