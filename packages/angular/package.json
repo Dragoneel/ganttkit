@@ -1,0 +1,55 @@
+{
+  "name": "@ganttkit/angular",
+  "version": "0.1.2",
+  "author": "dchar",
+  "description": "Angular renderer plugin for GanttKit - a <gantt-chart> component over the HTML renderer.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/angular"
+  },
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/fesm2022/ganttkit-angular.mjs",
+  "module": "./dist/fesm2022/ganttkit-angular.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/ganttkit-angular.mjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "rimraf dist .ngc && ngc -p tsconfig.build.json && tsup && rimraf .ngc",
+    "dev": "rimraf dist .ngc && ngc -p tsconfig.build.json && concurrently -n ngc,bundle \"ngc -p tsconfig.build.json --watch\" \"tsup --watch\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
+    "@angular/core": "^22.0.0"
+  },
+  "dependencies": {
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/html": "workspace:*"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^22.1.4",
+    "@angular/compiler-cli": "^22.1.4",
+    "@angular/core": "^22.1.4",
+    "concurrently": "^10.0.5",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "~6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

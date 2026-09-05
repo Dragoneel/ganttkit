@@ -17,6 +17,11 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   - **`@ganttkit/svg`**  plain HTML/CSS/JS renderer; maps each primitive to an SVG element.
   - **`@ganttkit/html`**  plain HTML/CSS/JS renderer; maps each primitive to a positioned `<div>`.
   - **`@ganttkit/canvas`**  plain HTML/CSS/JS renderer; draws each primitive to a 2D `<canvas>`.
+- **Framework bindings**  thin components over `@ganttkit/html`; they own the
+  renderer's lifetime and bind it to the framework's reactivity, nothing more:
+  - **`@ganttkit/vue`**  a `<GanttChart>` component for Vue 3.
+  - **`@ganttkit/react`**  a `<GanttChart>` component for React 19.
+  - **`@ganttkit/angular`**  a `<gantt-chart>` standalone component for Angular.
 - **Feature plugins**  extend behaviour through the plugin API:
   - **`@ganttkit/plugin-columns`**  the sidebar columns (deliberately *not* in
     the core; renderers draw a sidebar only when this is installed).
@@ -72,6 +77,9 @@ See each package's `examples/` directory for runnable demos.
 | [`@ganttkit/svg`](packages/svg) | Vanilla SVG renderer (primitive → SVG element) |
 | [`@ganttkit/html`](packages/html) | Vanilla HTML renderer (primitive → `<div>`) |
 | [`@ganttkit/canvas`](packages/canvas) | Vanilla canvas renderer (primitive → 2D context) |
+| [`@ganttkit/vue`](packages/vue) | Vue 3 component over the HTML renderer |
+| [`@ganttkit/react`](packages/react) | React 19 component over the HTML renderer |
+| [`@ganttkit/angular`](packages/angular) | Angular component over the HTML renderer |
 | [`@ganttkit/plugin-columns`](packages/plugin-columns) | Sidebar columns feature plugin |
 | [`@ganttkit/plugin-filter`](packages/plugin-filter) | Row filtering feature plugin |
 | [`@ganttkit/plugin-progress`](packages/plugin-progress) | Task completion fill |

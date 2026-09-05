@@ -38,6 +38,11 @@
   "pnpm": {
     "overrides": {
       "human-id": "^1.0.2"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@angular/build>vitest": "*"
+      }
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "name": "@ganttkit/example-angular",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@angular/common": "^22.1.4",
+    "@angular/core": "^22.1.4",
+    "@angular/platform-browser": "^22.1.4",
+    "@ganttkit/angular": "workspace:*",
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/plugin-baseline": "workspace:*",
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-dependencies": "workspace:*",
+    "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-i18n": "workspace:*",
+    "@ganttkit/plugin-markers": "workspace:*",
+    "@ganttkit/plugin-progress": "workspace:*",
+    "@ganttkit/plugin-selection": "workspace:*",
+    "@ganttkit/plugin-toolbar": "workspace:*",
+    "@ganttkit/plugin-tooltip": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^2.7.1",
+    "@angular/build": "^22.1.6",
+    "@angular/compiler": "^22.1.4",
+    "@angular/compiler-cli": "^22.1.4",
+    "typescript": "~6.0.3",
+    "vite": "^6.0.0"
+  }
+}

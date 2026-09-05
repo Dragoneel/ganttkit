@@ -1,0 +1,6 @@
+/*
+ * The chart itself is painted by @ganttkit/html, so its stylesheet is the one
+ * that matters. This file only re-exports it, letting apps import the CSS from
+ * the same package they import the component from.
+ */
+@import '@ganttkit/html/styles.css';
