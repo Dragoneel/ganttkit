@@ -1,6 +1,6 @@
 # @ganttkit/html
 
-A plain **HTML/CSS/JS** renderer for [GanttKit](https://www.npmjs.com/package/@ganttkit/core)  the DOM-twin of
+A plain **HTML/CSS/JS** renderer for [GanttKit](https://www.npmjs.com/package/@ganttkit/core), the DOM-twin of
 [`@ganttkit/svg`](https://www.npmjs.com/package/@ganttkit/svg).
 
 Both packages consume the exact same renderer-agnostic **scene** the engine
@@ -12,7 +12,7 @@ package paints each one as a positioned `<div>` styled with
 markers, tooltip, selection, …) works unchanged.
 
 The scene model is deliberately backend-neutral, so the same primitives can feed
-other renderers in the future  canvas, WebGL, PNG, PDF, or even a terminal.
+other renderers in the future, canvas, WebGL, PNG, PDF, or even a terminal.
 
 ## Usage
 
@@ -50,6 +50,6 @@ engine.use(htmlRenderer({ target: '#app' }))
 
 ## Examples
 
-- [`examples/basic`](examples/basic)  `pnpm --filter @ganttkit/example-html dev`
-- [`examples/stress`](examples/stress)  large-dataset benchmark with a live
+- [`examples/basic`](examples/basic), `pnpm --filter @ganttkit/example-html dev`
+- [`examples/stress`](examples/stress), large-dataset benchmark with a live
   metrics panel: `pnpm --filter @ganttkit/example-html-stress dev`

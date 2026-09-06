@@ -4,7 +4,7 @@ import type { DateAdapter } from '../time/date-adapter'
 /** What a drag gesture changes about a task. */
 export type DragMode = 'move' | 'resize-left' | 'resize-right'
 
-/** Live state of an in-progress drag. Pure data  no DOM references. */
+/** Live state of an in-progress drag. Pure data, no DOM references. */
 export interface DragState {
   taskId: string
   rowId: string

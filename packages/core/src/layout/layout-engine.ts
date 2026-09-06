@@ -16,7 +16,7 @@ export interface TaskLayout {
   width: number
   /** Bar height (px). */
   height: number
-  /** Vertical centre of the row (px)  handy for markers and links. */
+  /** Vertical centre of the row (px), handy for markers and links. */
   cy: number
 }
 
@@ -32,7 +32,7 @@ export function contentHeight(rowCount: number, rowHeight: number): number {
  * Tasks with unparseable dates are skipped and reported via `onInvalid`.
  *
  * `baseRowIndex` is added to each row's local index so a *slice* of rows lays
- * out at its absolute vertical position  this is what makes viewport
+ * out at its absolute vertical position, this is what makes viewport
  * virtualization possible (lay out only the visible rows, still positioned
  * correctly).
  */

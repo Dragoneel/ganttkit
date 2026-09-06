@@ -56,7 +56,7 @@ export type SvgRendererOptions = RendererOptions
  * Built as a plugin: it subscribes to `scene:change`, paints the scene as SVG,
  * renders the sidebar/header from engine accessors, and forwards pointer
  * gestures (click, drag/resize, pan, zoom) back to the engine. It owns no
- * geometry  that all comes from `@ganttkit/core`.
+ * geometry, that all comes from `@ganttkit/core`.
  */
 export class SvgRenderer {
   private readonly ctx: GanttContext
@@ -105,7 +105,7 @@ export class SvgRenderer {
       },
     }))
     // Set the viewport before the first paint so we never build the full scene
-    // into the DOM  even initially only the visible window is rendered.
+    // into the DOM, even initially only the visible window is rendered.
     if (this.bodyEl.clientHeight > 0)
       this.ctx.engine.setViewport(this.computeViewport())
     this.renderAll()
@@ -438,7 +438,7 @@ export class SvgRenderer {
     document.addEventListener('mouseup', onUp)
   }
 
-  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  /** Live width update during a resize drag, pure DOM writes, no recompute. */
   private previewColumnWidth(index: number, width: number, total: number): void {
     const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
     if (headCell)
@@ -587,7 +587,7 @@ export class SvgRenderer {
     const onMove = (e: MouseEvent) => {
       drag = updateDrag(drag, e.clientX)
       const { start, end } = resolveDraggedDates(task, drag, adapter)
-      // Engine builds a windowed preview  pixel-accurate and O(visible).
+      // Engine builds a windowed preview, pixel-accurate and O(visible).
       this.ctx.engine.setDragPreview(taskId, start, end)
       this.ctx.events.emit('task:dragmove', { task, row, mode, start, end, changed: true })
     }

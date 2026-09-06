@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-tooltip  a hover card for tasks.
+ * @ganttkit/plugin-tooltip, a hover card for tasks.
  *
  * A UI-slot plugin: it renders into the renderer's `overlay` slot and tracks the
  * pointer over the chart. Works across svg, html, canvas, vue and nuxt.

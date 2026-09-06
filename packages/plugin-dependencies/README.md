@@ -2,7 +2,7 @@
 
 Dependency editing and **finish-to-start auto-scheduling**. Dependency *lines*
 are already drawn by the core (from each task's `dependencies`); this plugin adds
-the behaviour around them. Pure engine-side  works with every renderer.
+the behaviour around them. Pure engine-side, works with every renderer.
 
 ```ts
 import { createDependencies } from '@ganttkit/plugin-dependencies'
@@ -25,7 +25,7 @@ It edits the engine's **source rows**, so it composes correctly with filtering
 and tree plugins (hidden rows are still scheduled).
 
 **Drag-to-create links** (`linkDrag`, default `true`): connector handles appear
-at each bar's right edge  drag from one to another task to create a dependency.
+at each bar's right edge, drag from one to another task to create a dependency.
 This uses the renderer's overlay slot, so it needs a slot-hosting renderer (the
 bundled ones); it's inert under SSR/headless. You can still create links
 programmatically or via the `deps.add` command.
@@ -33,9 +33,9 @@ programmatically or via the `deps.add` command.
 ## API
 
 - `createDependencies(options?) → { plugin, addDependency, removeDependency, reschedule }`
-  - `gap`  min days between predecessor end and dependent start (default `0`)
-  - `autoSchedule`  reschedule on drag (default `true`)
-  - `linkDrag`  connector handles + drag-to-create (default `true`)
+  - `gap`, min days between predecessor end and dependent start (default `0`)
+  - `autoSchedule`, reschedule on drag (default `true`)
+  - `linkDrag`, connector handles + drag-to-create (default `true`)
 
 ## License
 

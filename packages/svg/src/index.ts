@@ -1,5 +1,5 @@
 /**
- * @ganttkit/svg  plain HTML/CSS/JS SVG renderer for GanttKit.
+ * @ganttkit/svg, plain HTML/CSS/JS SVG renderer for GanttKit.
  *
  * Maps the engine's renderer-agnostic vector primitives 1:1 onto SVG elements.
  *

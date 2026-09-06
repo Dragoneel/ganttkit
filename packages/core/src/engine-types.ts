@@ -51,9 +51,9 @@ export interface TaskDragEvent {
 
 /**
  * Why the scene was rebuilt:
- * - `data`  rows/view mode/columns changed (timescale + header may differ)
- * - `viewport`  the user scrolled/resized (only the window moved)
- * - `preview`  a transient drag preview
+ * - `data`, rows/view mode/columns changed (timescale + header may differ)
+ * - `viewport`, the user scrolled/resized (only the window moved)
+ * - `preview`, a transient drag preview
  *
  * Renderers use this to skip unnecessary header rebuilds on scroll.
  */
@@ -118,7 +118,7 @@ export interface GanttEngineApi {
    * rubber-band selection). Renderers map the drag rectangle into scene space.
    */
   hitTestRegion: (x1: number, y1: number, x2: number, y2: number) => string[]
-  /** Rows after the `rows` hook  what a renderer should display. */
+  /** Rows after the `rows` hook, what a renderer should display. */
   getRows: () => GanttRow[]
   setRows: (rows: GanttRow[]) => void
   setViewMode: (mode: ViewMode) => void

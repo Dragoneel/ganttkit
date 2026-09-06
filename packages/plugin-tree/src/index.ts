@@ -1,11 +1,11 @@
 /**
- * @ganttkit/plugin-tree  hierarchical rows with expand/collapse.
+ * @ganttkit/plugin-tree, hierarchical rows with expand/collapse.
  *
  * A rows-hook plugin. Rows relate via `parentId`; the plugin hides descendants
  * of collapsed rows and annotates each row with `level`, `hasChildren`, and
  * `expanded` (core fields the renderers' sidebar reads to draw a chevron).
  * Toggling is driven by the generic `row:toggle` engine event (emitted by the
- * renderers) and by commands  so this plugin never touches the DOM.
+ * renderers) and by commands, so this plugin never touches the DOM.
  *
  * ```ts
  * import { createTree } from '@ganttkit/plugin-tree'

@@ -1,5 +1,5 @@
 /**
- * @ganttkit/canvas  plain HTML/CSS/JS canvas renderer for GanttKit.
+ * @ganttkit/canvas, plain HTML/CSS/JS canvas renderer for GanttKit.
  *
  * The third sibling of `@ganttkit/svg` and `@ganttkit/html`: it consumes the
  * same renderer-agnostic scene of vector primitives but draws them into a single

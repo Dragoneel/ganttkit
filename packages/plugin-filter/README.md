@@ -22,20 +22,20 @@ filter.setRowFilter(filters.rowNameIncludes('design'))
 filter.clear()
 ```
 
-Works with any renderer  the engine recomputes and every renderer repaints.
+Works with any renderer, the engine recomputes and every renderer repaints.
 
 ## API
 
 - `createFilter(options?) → GanttFilter`
-  - `options.row` / `options.task`  initial predicates
-  - `options.dropEmptyRows`  hide rows whose tasks were all filtered out (default `true`)
+  - `options.row` / `options.task`, initial predicates
+  - `options.dropEmptyRows`, hide rows whose tasks were all filtered out (default `true`)
 - `GanttFilter`: `{ plugin, setRowFilter, setTaskFilter, clear }`
 - `filters`: `taskNameIncludes`, `rowNameIncludes`, `taskOverlaps(from, to)`
 
 ## Commands
 
 Installing also registers: `filter.setRowFilter`, `filter.setTaskFilter`,
-`filter.clear`  callable via `engine.commands.execute(...)`.
+`filter.clear`, callable via `engine.commands.execute(...)`.
 
 ## How it works (the plugin pattern)
 

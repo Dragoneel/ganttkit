@@ -56,7 +56,7 @@ export type HtmlRendererOptions = RendererOptions
  * agnostic scene of vector primitives, but paints each one as a positioned
  * `<div>` (styled with `background`/`border`/`clip-path`) instead of an SVG
  * element. Same data-attributes, same gestures, so every feature plugin works
- * unchanged. It owns no geometry  that all comes from `@ganttkit/core`.
+ * unchanged. It owns no geometry, that all comes from `@ganttkit/core`.
  */
 export class HtmlRenderer {
   private readonly ctx: GanttContext
@@ -105,7 +105,7 @@ export class HtmlRenderer {
       },
     }))
     // Set the viewport before the first paint so we never build the full scene
-    // into the DOM  even initially only the visible window is rendered.
+    // into the DOM, even initially only the visible window is rendered.
     if (this.bodyEl.clientHeight > 0)
       this.ctx.engine.setViewport(this.computeViewport())
     this.renderAll()
@@ -439,7 +439,7 @@ export class HtmlRenderer {
     document.addEventListener('mouseup', onUp)
   }
 
-  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  /** Live width update during a resize drag, pure DOM writes, no recompute. */
   private previewColumnWidth(index: number, width: number, total: number): void {
     const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
     if (headCell)
@@ -570,7 +570,7 @@ export class HtmlRenderer {
     const onMove = (e: MouseEvent) => {
       drag = updateDrag(drag, e.clientX)
       const { start, end } = resolveDraggedDates(task, drag, adapter)
-      // Engine builds a windowed preview  pixel-accurate and O(visible).
+      // Engine builds a windowed preview, pixel-accurate and O(visible).
       this.ctx.engine.setDragPreview(taskId, start, end)
       this.ctx.events.emit('task:dragmove', { task, row, mode, start, end, changed: true })
     }

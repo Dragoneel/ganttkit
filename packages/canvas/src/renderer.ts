@@ -62,7 +62,7 @@ export type CanvasRendererOptions = RendererOptions
  * pinned to it; a full-size spacer drives the scrollbars, and on every scroll
  * the engine re-windows the scene and we redraw with the scroll offset applied.
  * Colours are resolved from the theme's `--gk-*` CSS variables, and pointer
- * gestures are resolved through `engine.hitTest(x, y)`  the renderer never
+ * gestures are resolved through `engine.hitTest(x, y)`, the renderer never
  * re-implements hit geometry; it only maps the pointer into scene coordinates.
  */
 export class CanvasRenderer {
@@ -451,7 +451,7 @@ export class CanvasRenderer {
     document.addEventListener('mouseup', onUp)
   }
 
-  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  /** Live width update during a resize drag, pure DOM writes, no recompute. */
   private previewColumnWidth(index: number, width: number, total: number): void {
     const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
     if (headCell)
@@ -512,7 +512,7 @@ export class CanvasRenderer {
     this.disposers.push(() => this.canvasEl.removeEventListener('click', this.onTaskClick))
 
     // Canvas has no per-shape DOM, so hover hit-testing drives the resize cursor
-    // and emits semantic `task:hover`/`task:hoverend` events  the same events the
+    // and emits semantic `task:hover`/`task:hoverend` events, the same events the
     // DOM renderers emit, so plugins (tooltip, selection) stay renderer-agnostic.
     this.canvasEl.addEventListener('mousemove', this.onHover)
     this.disposers.push(() => this.canvasEl.removeEventListener('mousemove', this.onHover))
@@ -586,7 +586,7 @@ export class CanvasRenderer {
 
   private onTaskClick = (event: MouseEvent): void => {
     // A drag/resize ends with a `mouseup` that the browser follows with a
-    // `click`  swallow it so moving a bar doesn't also select/emit a click.
+    // `click`, swallow it so moving a bar doesn't also select/emit a click.
     if (this.suppressClick) {
       this.suppressClick = false
       return

@@ -40,12 +40,12 @@ Canvas is immediate-mode, so two things work differently behind the same API:
 - **Viewport-sized canvas.** A canvas can't be millions of pixels tall, so it is
   kept the size of the *visible viewport* and pinned over a full-size spacer that
   drives the scrollbars. On every scroll the engine re-windows the scene and the
-  renderer redraws with the scroll offset applied  cost stays bounded by what's
+  renderer redraws with the scroll offset applied, cost stays bounded by what's
   visible, no matter the dataset size.
 - **No CSS cascade.** There are no per-shape DOM nodes, so the renderer resolves
   colours itself from the theme's `--gk-*` CSS variables (light/dark and your
   overrides still apply). Pointer gestures are resolved through the engine's
-  shared `engine.hitTest(x, y)`  the renderer maps the pointer into scene
+  shared `engine.hitTest(x, y)`, the renderer maps the pointer into scene
   coordinates and lets the engine say what's under it, rather than re-inventing
   hit geometry. The stylesheet still ships the variables and the chrome (header,
   sidebar, toolbar/overlay slots).
@@ -58,8 +58,8 @@ Canvas is immediate-mode, so two things work differently behind the same API:
 
 ## Examples
 
-- [`examples/basic`](examples/basic)  `pnpm --filter @ganttkit/example-canvas dev`
-- [`examples/stress`](examples/stress)  large-dataset benchmark with a live
+- [`examples/basic`](examples/basic), `pnpm --filter @ganttkit/example-canvas dev`
+- [`examples/stress`](examples/stress), large-dataset benchmark with a live
   metrics panel: `pnpm --filter @ganttkit/example-canvas-stress dev`
 
 ## License

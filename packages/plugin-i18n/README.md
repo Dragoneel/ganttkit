@@ -25,7 +25,7 @@ i18n.t('toolbar.today')      // → translated string (English fallback)
    week and weekend days. Toggle with `localizeDates: false`.
 2. **Strings**  publishes an `i18n` service under `'gantt:i18n'`. Built-in
    plugins (`@ganttkit/plugin-toolbar`, `@ganttkit/plugin-tooltip`) read it via
-   `t(key)` and fall back to English when it's absent  so installing this is
+   `t(key)` and fall back to English when it's absent, so installing this is
    purely additive.
 
 Install it **before** the UI plugins so the service is present when they mount.
@@ -45,7 +45,7 @@ Built-in keys: `view.Day` / `view.Week` / `view.Month`, `toolbar.today`,
     `localizeDates?` (default `true`), `dateOptions?` (forwarded to `createIntlAdapter`)
 - `GanttI18n`: `{ plugin, t, locale, setLocale, subscribe }`
 
-Date-only localization needs nothing from this package  pass
+Date-only localization needs nothing from this package, pass
 `createIntlAdapter(locale)` (from `@ganttkit/core`) as the engine's `dateAdapter`.
 
 ## License

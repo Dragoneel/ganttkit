@@ -1,5 +1,5 @@
 /**
- * @ganttkit/core  headless, framework-agnostic Gantt engine.
+ * @ganttkit/core, headless, framework-agnostic Gantt engine.
  *
  * Import the engine and compose it with plugins:
  *

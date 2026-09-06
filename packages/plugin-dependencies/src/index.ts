@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-dependencies  link editing + finish-to-start auto-scheduling.
+ * @ganttkit/plugin-dependencies, link editing + finish-to-start auto-scheduling.
  *
  * Dependency *lines* are already drawn by the core (from each task's
  * `dependencies`). This plugin adds the behaviour:
@@ -10,7 +10,7 @@
  * - **commands**: `deps.add`, `deps.remove`, `deps.reschedule`.
  *
  * It operates on the engine's source rows (not the post-hook view), so it
- * composes correctly with filtering/tree plugins. Pure engine-side  no DOM.
+ * composes correctly with filtering/tree plugins. Pure engine-side, no DOM.
  *
  * `task.dependencies` lists predecessor ids (the task depends on those), so
  * `addDependency(predecessorId, successorId)` adds `predecessorId` to the

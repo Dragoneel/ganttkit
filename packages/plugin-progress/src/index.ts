@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-progress  draw task completion inside bars.
+ * @ganttkit/plugin-progress, draw task completion inside bars.
  *
  * A scene-hook plugin: for every task with a `progress` value in `[0, 1]` it
  * overlays a fill rect spanning that fraction of the bar. Pure engine-side, so

@@ -1,6 +1,6 @@
 # @ganttkit/plugin-columns
 
-The **sidebar columns** feature for GanttKit  deliberately a plugin, not part
+The **sidebar columns** feature for GanttKit, deliberately a plugin, not part
 of the core engine.
 
 The core knows nothing about sidebars. This plugin owns the column model
@@ -29,13 +29,13 @@ columns.setColumns([{ key: 'name', label: 'Name' }]) // reactive
 ## API
 
 - `createColumns(options?) → GanttColumns`
-  - `options.columns`  column descriptors (`{ key, label, width?, formatter?, resizable? }`)
-  - `options.sidebarWidth`  total width in px (default `200`)
-  - `options.indentPerLevel`  px per `row.level` for the tree column (default `16`)
-  - `options.treeColumn`  key of the column that shows the tree chevron/indentation (default: first column)
-  - `options.resizable`  allow dragging a column's header edge to resize it (default `true`; per-column `resizable` overrides it)
-  - `options.minColumnWidth`  smallest width a column can be dragged to (default `48`)
-  - `options.persistWidths`  remember resized widths: a `localStorage` key string, or a custom `ColumnWidthStore` (`{ load, save }`)
+  - `options.columns`, column descriptors (`{ key, label, width?, formatter?, resizable? }`)
+  - `options.sidebarWidth`, total width in px (default `200`)
+  - `options.indentPerLevel`, px per `row.level` for the tree column (default `16`)
+  - `options.treeColumn`, key of the column that shows the tree chevron/indentation (default: first column)
+  - `options.resizable`, allow dragging a column's header edge to resize it (default `true`; per-column `resizable` overrides it)
+  - `options.minColumnWidth`, smallest width a column can be dragged to (default `48`)
+  - `options.persistWidths`, remember resized widths: a `localStorage` key string, or a custom `ColumnWidthStore` (`{ load, save }`)
 - `GanttColumns`: `{ plugin, setColumns, setSidebarWidth, setTreeColumn, setColumnWidth, resetColumnWidths, getColumnWidths, getColumns }`
 - Helpers: `normalizeColumns`, `columnValue`, `localStorageWidthStore`
 - Contract: `SidebarModel`, `SIDEBAR_SERVICE`, `ColumnWidthStore`
@@ -64,7 +64,7 @@ install(ctx) {
 }
 ```
 
-A renderer consumes it with `engine.consume('gantt:sidebar')`  no compile-time
+A renderer consumes it with `engine.consume('gantt:sidebar')`, no compile-time
 dependency on this package, just the shared key and shape.
 
 ## License

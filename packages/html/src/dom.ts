@@ -30,7 +30,7 @@ function applyBase(el: HTMLElement, node: VectorPrimitive): void {
     el.title = node.title
 }
 
-/** An absolutely-positioned, empty box  the canvas every primitive draws into. */
+/** An absolutely-positioned, empty box, the canvas every primitive draws into. */
 function box(): HTMLElement {
   const el = document.createElement('div')
   el.style.position = 'absolute'
@@ -76,7 +76,7 @@ function arrowHead(x: number, y: number, angle: number): HTMLElement {
   const el = box()
   el.className = 'gantt__html-arrow'
   // The triangle is built from borders: an 8×8 box whose left border is the body
-  // and whose tip sits on its right edge  so we anchor that right-centre point.
+  // and whose tip sits on its right edge, so we anchor that right-centre point.
   el.style.left = `${x - 8}px`
   el.style.top = `${y - 4}px`
   el.style.transformOrigin = '8px 4px'
@@ -122,7 +122,7 @@ export function createPrimitive(node: ScenePrimitive): HTMLElement {
     }
     case 'path': {
       // A path becomes a wrapper holding one stroke box per segment, plus an
-      // optional arrowhead  so the engine's class/data/title apply to the group.
+      // optional arrowhead, so the engine's class/data/title apply to the group.
       const wrap = box()
       wrap.style.left = '0'
       wrap.style.top = '0'

@@ -2,7 +2,7 @@
  * The scene model: a renderer-agnostic description of what to draw, expressed as
  * a flat list of **vector primitives** (rect, line, path, polygon, text). The
  * engine produces them; a renderer maps each primitive onto whatever its backend
- * draws with  SVG elements, HTML/CSS boxes, a canvas/WebGL context, or a
+ * draws with: SVG elements, HTML/CSS boxes, a canvas/WebGL context, or a
  * PNG/PDF/terminal rasteriser. No geometry math happens in the renderer.
  *
  * Coordinates are CSS pixels in an SVG-style space (origin top-left, y down).

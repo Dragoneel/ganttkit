@@ -4,7 +4,7 @@ The headless, framework-agnostic engine behind GanttKit. No DOM, no UI
 framework, no runtime dependencies.
 
 It owns the data model, time-scale, layout geometry, interaction logic, reactive
-state, and a plugin host  and publishes a declarative **scene** (a list of
+state, and a plugin host, and publishes a declarative **scene** (a list of
 backend-neutral **vector primitives**: rect, line, path, polygon, text) for
 renderers to paint. An SVG renderer ([`@ganttkit/svg`](https://www.npmjs.com/package/@ganttkit/svg)) maps each
 primitive to an SVG element; an HTML renderer ([`@ganttkit/html`](https://www.npmjs.com/package/@ganttkit/html)) maps
@@ -41,8 +41,8 @@ engine.setViewMode('Month')
 | `Scene` | Renderer-agnostic vector-primitive description (rect/line/path/polygon/text) |
 | `Store` / `EventBus` / `Hook` / `CommandRegistry` / `ServiceRegistry` | Reactive + extension primitives |
 
-The core is intentionally feature-light. Anything optional  the sidebar
-columns, filters, view toolbars  is a plugin. The **`ServiceRegistry`**
+The core is intentionally feature-light. Anything optional, the sidebar
+columns, filters, view toolbars, is a plugin. The **`ServiceRegistry`**
 (`engine.provide` / `engine.consume`) lets a feature plugin publish a capability
 that renderers or other plugins look up by key, so the engine never grows
 feature-specific surface area.
@@ -76,8 +76,8 @@ engine.use(sortByName)
 
 ## UI slots (plugin DOM)
 
-The scene is the declarative vector-primitive contract. For HTML UI  toolbars, tooltips,
-context menus, rubber-bands  plugins contribute through the **UI registry**
+The scene is the declarative vector-primitive contract. For HTML UI, toolbars, tooltips,
+context menus, rubber-bands, plugins contribute through the **UI registry**
 (`ctx.ui`): they describe a slot and render plain DOM into a host element the
 renderer provides. The same plain-DOM mount works in the SVG/HTML renderers and
 inside Vue, so a UI plugin stays a single package.
@@ -108,7 +108,7 @@ mounts only run where a renderer hosts the slots.
 ## Virtualization (large datasets)
 
 The engine windows the scene to the renderer's viewport, so cost is bounded by
-what's visible  not the dataset size. The renderer reports its viewport; the
+what's visible, not the dataset size. The renderer reports its viewport; the
 engine rebuilds only the visible rows/day-columns (plus overscan):
 
 ```ts

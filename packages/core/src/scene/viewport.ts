@@ -4,7 +4,7 @@ import type { TimeScale } from '../time/time-scale'
  * The visible region of the chart, in content pixels. Supplied by a renderer
  * (from its scroll container) so the engine can build a windowed scene.
  *
- * `width`/`height` are the visible *chart* size  exclude a sticky sidebar from
+ * `width`/`height` are the visible *chart* size, exclude a sticky sidebar from
  * `width`. `scrollLeft` is the chart's own x at the left edge of the viewport.
  */
 export interface Viewport {

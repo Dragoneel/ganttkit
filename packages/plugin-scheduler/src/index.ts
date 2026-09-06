@@ -1,9 +1,9 @@
 /**
- * @ganttkit/plugin-scheduler  resource↔task assignment scheduling.
+ * @ganttkit/plugin-scheduler, resource↔task assignment scheduling.
  *
  * Turns a task-oriented Gantt into a *resource-scheduling* view. The concept is
- * one source of truth  an {@link Assignment} linking a task to a resource over a
- * date window  from which the plugin derives **resource lanes** (one row per
+ * one source of truth, an {@link Assignment} linking a task to a resource over a
+ * date window, from which the plugin derives **resource lanes** (one row per
  * resource, each assignment drawn as a bar in that lane). Because a row can hold
  * many bars, this naturally models:
  *
@@ -109,7 +109,7 @@ export function assignmentIdFromTaskId(taskId: string): string | null {
 
 export interface SchedulerOptions {
   resources: Resource[]
-  /** The tasks being scheduled  used for assignment-bar labels and colours. */
+  /** The tasks being scheduled, used for assignment-bar labels and colours. */
   tasks: GanttTask[]
   /** Initial assignments. Default none. */
   assignments?: Assignment[]
@@ -433,9 +433,9 @@ export interface SchedulerDndEndpoint {
 
 export interface SchedulerDndOptions {
   scheduler: GanttScheduler
-  /** The task-oriented chart  the drag *source* for new assignments. */
+  /** The task-oriented chart, the drag *source* for new assignments. */
   task: SchedulerDndEndpoint
-  /** The resource-oriented chart  the drop *target* (and source for retime/reassign). */
+  /** The resource-oriented chart, the drop *target* (and source for retime/reassign). */
   resource: SchedulerDndEndpoint
   /** Notified after every committed change (handy for logging / persistence). */
   onChange?: (change: SchedulerChange) => void
@@ -850,7 +850,7 @@ export function createSchedulerDnd(options: SchedulerDndOptions): () => void {
 export interface LinkTimelinesOptions {
   /** Engines to keep on the same view-mode. */
   engines: GanttEngine[]
-  /** Their renderer roots  keeps horizontal scroll in lockstep. */
+  /** Their renderer roots, keeps horizontal scroll in lockstep. */
   roots?: HTMLElement[]
 }
 

@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-selection  select tasks, rubber-band, and a context menu.
+ * @ganttkit/plugin-selection, select tasks, rubber-band, and a context menu.
  *
  * Combines engine-side state + a scene-hook highlight (renderer-agnostic) with a
  * UI-slot overlay for shift-drag rubber-band selection and a right-click menu.

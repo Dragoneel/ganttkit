@@ -1,5 +1,5 @@
 /**
- * @ganttkit/html  plain HTML/CSS/JS renderer for GanttKit.
+ * @ganttkit/html, plain HTML/CSS/JS renderer for GanttKit.
  *
  * The DOM-twin of `@ganttkit/svg`: it consumes the same renderer-agnostic
  * scene of vector primitives but paints them as positioned `<div>`s instead of

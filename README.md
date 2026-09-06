@@ -11,7 +11,7 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   geometry, interaction logic, reactive state, and a plugin host. It touches no
   DOM and depends on no UI framework. It emits a declarative **scene**  a plain
   list of backend-neutral **vector primitives** (rects, lines, paths, polygons,
-  text)  that any renderer can paint.
+  text), that any renderer can paint.
 - **UI plugins**  paint the scene and forward pointer events back to the
   engine. The same scene drives every backend:
   - **`@ganttkit/svg`**  plain HTML/CSS/JS renderer; maps each primitive to an SVG element.
@@ -57,7 +57,7 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   backends; adding React/Svelte/Angular or WebGL/PDF = a new thin renderer.
 - **Primitive efficiency.** The scene is described as vector primitives, so an
   SVG renderer maps them straight to `<rect>`/`<line>`/`<path>` with no diff-heavy DOM.
-- **Testable.** The engine is pure logic  unit-tested without a browser.
+- **Testable.** The engine is pure logic, unit-tested without a browser.
 - **Composable.** Features (filters, columns, view management, table side-view)
   are plugins that hook the same context, not forks of the component.
 

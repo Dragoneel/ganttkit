@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-columns  the sidebar/columns feature, as a plugin.
+ * @ganttkit/plugin-columns, the sidebar/columns feature, as a plugin.
  *
  * The core engine knows nothing about sidebars. This plugin owns the column
  * model and publishes a {@link SidebarModel} under the {@link SIDEBAR_SERVICE}
@@ -157,7 +157,7 @@ export function localStorageWidthStore(key: string): ColumnWidthStore {
         localStorage.setItem(key, JSON.stringify(widths))
       }
       catch {
-        // Ignore quota / privacy-mode / serialization errors  persistence is best-effort.
+        // Ignore quota / privacy-mode / serialization errors, persistence is best-effort.
       }
     },
   }

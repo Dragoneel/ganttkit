@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-baseline  planned-vs-actual comparison bars.
+ * @ganttkit/plugin-baseline, planned-vs-actual comparison bars.
  *
  * A scene-hook plugin. You snapshot a "baseline" (planned dates) and it draws a
  * ghost bar behind each task at its planned position; when the actual task has

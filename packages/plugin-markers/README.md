@@ -1,7 +1,7 @@
 # @ganttkit/plugin-markers
 
 Vertical date markers and shaded bands: a "today"/"now" line, deadlines, sprint
-or release boundaries. A scene-hook plugin  works with every renderer.
+or release boundaries. A scene-hook plugin, works with every renderer.
 
 ```ts
 import { createMarkers, todayMarker } from '@ganttkit/plugin-markers'
@@ -24,7 +24,7 @@ shaded band (inclusive). Optional `label` is drawn at the top.
 ## API
 
 - `createMarkers(initial?) → { plugin, setMarkers, addMarker, removeMarker, clearMarkers }`
-- `todayMarker(opts?)`  convenience marker for the current day
+- `todayMarker(opts?)`, convenience marker for the current day
 - `GanttMarker`: `{ id?, date, end?, label?, className? }`
 
 ## Styling

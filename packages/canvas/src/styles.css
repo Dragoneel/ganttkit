@@ -5,7 +5,7 @@
  * The layout/header/sidebar rules are identical to `@ganttkit/svg`. There are no
  * "scene primitive" rules here: the canvas renderer paints bars/lines/text
  * itself, reading these `--gk-*` variables via `getComputedStyle`. Keep the
- * variables  they are the renderer's colour source, not just CSS styling.
+ * variables, they are the renderer's colour source, not just CSS styling.
  */
 .gantt,
 .gantt[data-theme='light'] {

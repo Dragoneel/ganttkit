@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-i18n  localization for GanttKit.
+ * @ganttkit/plugin-i18n, localization for GanttKit.
  *
  * Two things in one plugin:
  * 1. **Locale dates**  swaps in an `Intl` date adapter so the timeline's
@@ -9,7 +9,7 @@
  *    `toolbar`/`tooltip` plugins consume it, falling back to English.
  *
  * Switching locale at runtime recomputes dates and notifies subscribers so the
- * UI re-renders  no reload.
+ * UI re-renders, no reload.
  *
  * ```ts
  * import { createI18n } from '@ganttkit/plugin-i18n'

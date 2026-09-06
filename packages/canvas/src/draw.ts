@@ -2,7 +2,7 @@ import type { Scene, ScenePolygon, ScenePrimitive } from '@ganttkit/core'
 
 /**
  * Canvas has no CSS cascade, so unlike the SVG/HTML renderers it cannot let a
- * stylesheet colour the primitives  it must resolve colours itself. This module
+ * stylesheet colour the primitives, it must resolve colours itself. This module
  * reads the theme's `--gk-*` custom properties off the root element (so light/
  * dark and user overrides still work) and maps each primitive's well-known class
  * to a 2D-context style. It also hit-tests pointer positions against the scene,

@@ -1,6 +1,6 @@
 # @ganttkit/plugin-progress
 
-Draws task completion inside the bars. A scene-hook plugin  pure engine-side,
+Draws task completion inside the bars. A scene-hook plugin, pure engine-side,
 so it works with every renderer (svg, html, canvas).
 
 ```ts
@@ -17,7 +17,7 @@ label. Milestones and tasks without `progress` are skipped.
 
 ## Options
 
-- `className`  extra class added to each progress rect (for custom styling).
+- `className`, extra class added to each progress rect (for custom styling).
 
 ## Styling
 

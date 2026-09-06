@@ -70,8 +70,8 @@ All colours are CSS variables scoped to `.gantt`. Switch themes via the
 
 ## Examples
 
-- [`examples/basic`](examples/basic)  `pnpm --filter @ganttkit/example-svg dev`
-- [`examples/stress`](examples/stress)  large-dataset benchmark (up to 20k tasks)
+- [`examples/basic`](examples/basic), `pnpm --filter @ganttkit/example-svg dev`
+- [`examples/stress`](examples/stress), large-dataset benchmark (up to 20k tasks)
   with a live metrics panel: `pnpm --filter @ganttkit/example-svg-stress dev`
 
 ## License
