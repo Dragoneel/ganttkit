@@ -2,14 +2,31 @@
   "name": "@ganttkit/plugin-tooltip",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Hover tooltip card for GanttKit tasks (UI-slot plugin).",
+  "description": "Hover tooltip card for GanttKit Gantt chart tasks.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "tooltip",
+    "hover",
+    "popover",
+    "ui"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-tooltip"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

@@ -2,14 +2,32 @@
   "name": "@ganttkit/angular",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Angular renderer plugin for GanttKit - a <gantt-chart> component over the HTML renderer.",
+  "description": "Angular Gantt chart component for GanttKit - a <gantt-chart> binding over the HTML, SVG or canvas renderer.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "angular",
+    "angular-component",
+    "angular-gantt",
+    "signals",
+    "component",
+    "typescript"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/angular"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

@@ -2,14 +2,31 @@
   "name": "@ganttkit/plugin-baseline",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Planned-vs-actual baseline bars for GanttKit (scene-hook plugin).",
+  "description": "Planned-vs-actual baseline bars for GanttKit Gantt charts, for schedule variance at a glance.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "baseline",
+    "planned-vs-actual",
+    "variance",
+    "schedule-tracking"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-baseline"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

@@ -2,14 +2,31 @@
   "name": "@ganttkit/plugin-filter",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Row/task filtering feature plugin for GanttKit.",
+  "description": "Row and task filtering for GanttKit Gantt charts, through the engine data pipeline.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "filter",
+    "sort",
+    "search",
+    "data-pipeline"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-filter"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

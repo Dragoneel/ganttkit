@@ -2,12 +2,35 @@
   "name": "@ganttkit/monorepo",
   "version": "0.1.2",
   "author": "dchar",
-  "private": true,
-  "description": "GanttKit is a framework-agnostic, plugin-driven Gantt chart engine.",
+  "description": "GanttKit - a headless, framework-agnostic Gantt chart engine for JavaScript and TypeScript, with SVG, HTML and canvas renderers and Vue, React and Angular bindings.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "headless",
+    "framework-agnostic",
+    "typescript",
+    "javascript",
+    "monorepo",
+    "svg",
+    "canvas",
+    "vue",
+    "react",
+    "angular"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git"
   },
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
+  "license": "MIT",
+  "private": true,
   "type": "module",
   "packageManager": "pnpm@9.15.4",
   "engines": {

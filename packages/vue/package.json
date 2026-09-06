@@ -2,14 +2,33 @@
   "name": "@ganttkit/vue",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Vue 3 renderer plugin for GanttKit - a <GanttChart> component over the HTML renderer.",
+  "description": "Vue 3 Gantt chart component for GanttKit - a <GanttChart> binding over the HTML, SVG or canvas renderer.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "vue",
+    "vue3",
+    "vue-component",
+    "vue-gantt",
+    "composable",
+    "component",
+    "typescript"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/vue"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

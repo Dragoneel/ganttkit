@@ -2,14 +2,32 @@
   "name": "@ganttkit/plugin-tree",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Hierarchical rows with expand/collapse for GanttKit (rows-hook plugin).",
+  "description": "Hierarchical rows with expand and collapse for GanttKit Gantt charts - a work breakdown structure.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "tree",
+    "hierarchy",
+    "wbs",
+    "work-breakdown-structure",
+    "expand-collapse"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-tree"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

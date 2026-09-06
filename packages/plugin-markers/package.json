@@ -2,14 +2,32 @@
   "name": "@ganttkit/plugin-markers",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Vertical date markers and bands for GanttKit (scene-hook plugin).",
+  "description": "Vertical date markers and bands for GanttKit Gantt charts - today line, deadlines, sprints.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "markers",
+    "today-line",
+    "deadline",
+    "milestone",
+    "date-range"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-markers"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

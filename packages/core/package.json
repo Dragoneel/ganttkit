@@ -2,14 +2,34 @@
   "name": "@ganttkit/core",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Headless, framework-agnostic Gantt engine with a plugin host.",
+  "description": "Headless, framework-agnostic Gantt chart engine for JavaScript and TypeScript, with a plugin host and zero runtime dependencies.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "headless",
+    "framework-agnostic",
+    "typescript",
+    "javascript",
+    "plugin",
+    "engine",
+    "task-management",
+    "virtualization"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/core"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

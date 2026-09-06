@@ -2,14 +2,32 @@
   "name": "@ganttkit/plugin-dependencies",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Dependency editing + finish-to-start auto-scheduling for GanttKit.",
+  "description": "Task dependencies for GanttKit Gantt charts - drag-to-create links and finish-to-start auto-scheduling.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "dependencies",
+    "auto-scheduling",
+    "finish-to-start",
+    "task-links",
+    "precedence"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-dependencies"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
