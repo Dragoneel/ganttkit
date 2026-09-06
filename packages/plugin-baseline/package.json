@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-baseline",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Planned-vs-actual baseline bars for GanttKit Gantt charts, for schedule variance at a glance.",
   "keywords": [

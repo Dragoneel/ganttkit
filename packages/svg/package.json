@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/svg",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "SVG Gantt chart renderer for GanttKit - maps the engine scene onto SVG elements.",
   "keywords": [

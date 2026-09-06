@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-filter",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Row and task filtering for GanttKit Gantt charts, through the engine data pipeline.",
   "keywords": [

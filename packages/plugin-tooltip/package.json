@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-tooltip",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Hover tooltip card for GanttKit Gantt chart tasks.",
   "keywords": [
