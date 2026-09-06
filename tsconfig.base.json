@@ -23,22 +23,30 @@
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "paths": {
       "@ganttkit/core": [
-        "packages/core/src"
+        "./packages/core/src"
       ],
       "@ganttkit/svg": [
-        "packages/svg/src"
+        "./packages/svg/src"
       ],
       "@ganttkit/html": [
-        "packages/html/src"
+        "./packages/html/src"
       ],
       "@ganttkit/canvas": [
-        "packages/canvas/src"
+        "./packages/canvas/src"
+      ],
+      "@ganttkit/vue": [
+        "./packages/vue/src"
+      ],
+      "@ganttkit/react": [
+        "./packages/react/src"
+      ],
+      "@ganttkit/angular": [
+        "./packages/angular/src"
       ],
       "@ganttkit/plugin-*": [
-        "packages/plugin-*/src"
+        "./packages/plugin-*/src"
       ]
     }
   }

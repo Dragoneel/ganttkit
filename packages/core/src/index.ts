@@ -1,5 +1,5 @@
 /**
- * @ganttkit/core  headless, framework-agnostic Gantt engine.
+ * @ganttkit/core, headless, framework-agnostic Gantt engine.
  *
  * Import the engine and compose it with plugins:
  *
@@ -98,6 +98,12 @@ export { CommandRegistry } from './plugin/commands'
 export { ServiceRegistry } from './plugin/service-registry'
 export { UI_SLOTS, UiRegistry } from './plugin/ui-registry'
 export type { UiContribution, UiMount, UiMountContext } from './plugin/ui-registry'
+export type {
+  ChevronContent,
+  ChevronOption,
+  RendererFactory,
+  RendererOptions,
+} from './plugin/renderer'
 export { GANTT_VIEWPORT_SERVICE } from './plugin/viewport-port'
 export type { GanttViewportPort } from './plugin/viewport-port'
 export { Hook } from './plugin/hooks'

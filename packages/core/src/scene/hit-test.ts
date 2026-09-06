@@ -1,6 +1,6 @@
 /**
  * Point hit-testing against the scene. The engine owns this so no renderer has
- * to re-implement hit geometry  SVG/HTML can rely on the DOM, while canvas,
+ * to re-implement hit geometry, SVG/HTML can rely on the DOM, while canvas,
  * WebGL or any future backend converts a pointer position to scene coordinates
  * and asks the engine what's under it.
  */
@@ -73,7 +73,7 @@ export function hitTestScene(scene: Scene, x: number, y: number): GanttHit | nul
 
 /**
  * Task ids whose bars intersect a rectangle in scene coordinates (corners in any
- * order). Used for rubber-band selection  renderers map the drag rectangle into
+ * order). Used for rubber-band selection, renderers map the drag rectangle into
  * scene space and call this rather than scanning the scene themselves.
  */
 export function hitTestRegion(scene: Scene, x1: number, y1: number, x2: number, y2: number): string[] {

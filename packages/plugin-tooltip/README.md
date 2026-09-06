@@ -18,8 +18,8 @@ return a string (set as HTML) or an `HTMLElement`.
 
 ## Options
 
-- `content(task, row)`  custom card content.
-- `order`  sort order within the overlay slot.
+- `content(task, row)`, custom card content.
+- `order`, sort order within the overlay slot.
 
 Styled via `.gantt__tooltip` in the default theme.
 

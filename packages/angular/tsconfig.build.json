@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".ngc",
+    "declarationDir": "dist",
+    "rootDir": "src",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    // Resolve @ganttkit/* through node_modules (their built types) rather than
+    // the repo-wide source paths, so only this package's files are emitted.
+    "paths": {}
+  },
+  "angularCompilerOptions": {
+    // Emit partial declarations; the app's build runs the Angular linker.
+    "compilationMode": "partial"
+  },
+  "include": ["src"]
+}

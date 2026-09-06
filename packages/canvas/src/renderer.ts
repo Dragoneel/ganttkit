@@ -1,8 +1,10 @@
 import type {
+  ChevronOption,
   DragMode,
   GanttContext,
   GanttRow,
   GanttTask,
+  RendererOptions,
   Scene,
   Viewport,
 } from '@ganttkit/core'
@@ -39,40 +41,14 @@ interface SidebarProvider {
   setColumnWidth?: (key: string, width: number) => void
 }
 
-/**
- * Content for a tree chevron: a markup string (plain text/emoji, an inline
- * `<svg>…</svg>`, or an `<img src>`), or a DOM node built by the caller. Nodes
- * are cloned per row, so a single node may be reused across rows.
- */
-export type ChevronContent = string | Node
-
-/**
- * Customize the tree chevron. Either fixed content for the two states, or a
- * function invoked per tree row (e.g. to vary the icon by level or row data).
- */
-export type ChevronOption =
-  | { collapsed: ChevronContent, expanded: ChevronContent }
-  | ((state: { expanded: boolean, row: GanttRow }) => ChevronContent)
-
 /** Default chevron: unicode triangles, matching the shipped stylesheet. */
 const DEFAULT_CHEVRON = { collapsed: '▸', expanded: '▾' }
 
-export interface CanvasRendererOptions {
-  /** Element (or selector) to render into. */
-  target: HTMLElement | string
-  /** Initial theme. Toggle later via the `data-theme` attribute. */
-  theme?: 'light' | 'dark'
-  /** Enable ctrl/⌘ + wheel to change view mode. Default `true`. */
-  enableZoom?: boolean
-  /** Enable click-drag panning of the chart body. Default `true`. */
-  enablePan?: boolean
-  /**
-   * Custom tree expand/collapse chevron. Accepts a markup string (text, emoji,
-   * inline SVG or an `<img>`) or a DOM node, either as fixed collapsed/expanded
-   * content or a per-row function. Defaults to `▸`/`▾`.
-   */
-  chevron?: ChevronOption
-}
+/**
+ * Options for the canvas renderer. Identical to every other base
+ * renderer, so the three are drop-in swaps for one another.
+ */
+export type CanvasRendererOptions = RendererOptions
 
 /**
  * Imperative `<canvas>` renderer for a GanttKit engine.
@@ -86,7 +62,7 @@ export interface CanvasRendererOptions {
  * pinned to it; a full-size spacer drives the scrollbars, and on every scroll
  * the engine re-windows the scene and we redraw with the scroll offset applied.
  * Colours are resolved from the theme's `--gk-*` CSS variables, and pointer
- * gestures are resolved through `engine.hitTest(x, y)`  the renderer never
+ * gestures are resolved through `engine.hitTest(x, y)`, the renderer never
  * re-implements hit geometry; it only maps the pointer into scene coordinates.
  */
 export class CanvasRenderer {
@@ -475,7 +451,7 @@ export class CanvasRenderer {
     document.addEventListener('mouseup', onUp)
   }
 
-  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  /** Live width update during a resize drag, pure DOM writes, no recompute. */
   private previewColumnWidth(index: number, width: number, total: number): void {
     const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
     if (headCell)
@@ -536,7 +512,7 @@ export class CanvasRenderer {
     this.disposers.push(() => this.canvasEl.removeEventListener('click', this.onTaskClick))
 
     // Canvas has no per-shape DOM, so hover hit-testing drives the resize cursor
-    // and emits semantic `task:hover`/`task:hoverend` events  the same events the
+    // and emits semantic `task:hover`/`task:hoverend` events, the same events the
     // DOM renderers emit, so plugins (tooltip, selection) stay renderer-agnostic.
     this.canvasEl.addEventListener('mousemove', this.onHover)
     this.disposers.push(() => this.canvasEl.removeEventListener('mousemove', this.onHover))
@@ -610,7 +586,7 @@ export class CanvasRenderer {
 
   private onTaskClick = (event: MouseEvent): void => {
     // A drag/resize ends with a `mouseup` that the browser follows with a
-    // `click`  swallow it so moving a bar doesn't also select/emit a click.
+    // `click`, swallow it so moving a bar doesn't also select/emit a click.
     if (this.suppressClick) {
       this.suppressClick = false
       return

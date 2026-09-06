@@ -4,13 +4,19 @@ on:
   push:
     branches:
       - main
+  # So a failed publish can be retried without an empty commit.
+  workflow_dispatch:
+
+# Two releases running at once would race on the version bump and the tags.
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,9 +31,67 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
+      # Nothing to release unless a changeset is waiting, so an ordinary push to
+      # main (docs, a CI tweak) stops after this step.
+      - name: Look for pending changesets
+        id: pending
+        run: |
+          if find .changeset -name '*.md' ! -name 'README.md' | grep -q .; then
+            echo 'found=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'found=false' >> "$GITHUB_OUTPUT"
+            echo 'No changesets pending, nothing to release.' >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Create Release Pull Request or Publish
+      # ci.yml only gates pull requests, and this workflow publishes straight
+      # from a push, so the same gates run here before anything is released.
+      - name: Type checking
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm typecheck
+
+      - name: Linting
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm lint
+
+      - name: Unit tests
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm test
+
+      - name: Apply the version bump
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm changeset:version
+
+      # The bump rewrites the workspace versions, so the lockfile follows.
+      - name: Refresh the lockfile
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build all packages
+        if: steps.pending.outputs.found == 'true'
+        run: pnpm build
+
+      # Pushed with GITHUB_TOKEN, and a GITHUB_TOKEN push deliberately does not
+      # start another workflow run, so this cannot loop back into itself.
+      - name: Commit the version bump
+        if: steps.pending.outputs.found == 'true'
+        run: |
+          version=$(node -p "require('./packages/core/package.json').version")
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Version bump produced no changes.' >&2
+            exit 1
+          fi
+          git commit -m "Release v$version"
+          git push
+          echo "Released v$version" >> "$GITHUB_STEP_SUMMARY"
+
+      # Publishes to npm, pushes a tag per package, and opens a GitHub release
+      # for each. There are no changesets left by now, so the action goes
+      # straight to publishing instead of raising a pull request.
+      - name: Publish
+        if: steps.pending.outputs.found == 'true'
         uses: changesets/action@v1
         with:
           publish: pnpm changeset:publish

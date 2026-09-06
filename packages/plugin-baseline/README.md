@@ -2,7 +2,7 @@
 
 Planned-vs-actual comparison. Snapshot a **baseline** (the plan); the plugin
 draws a ghost bar behind each task at its planned position, so any slip is
-visible where the actual bar has moved off the ghost. Scene-hook plugin  works
+visible where the actual bar has moved off the ghost. Scene-hook plugin, works
 with every renderer.
 
 ```ts

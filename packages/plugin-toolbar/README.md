@@ -14,10 +14,10 @@ view mode), and a "Today" button that scrolls the viewport to the current day.
 
 ## Options
 
-- `viewModes`  modes for the segmented control. Default `['Day','Week','Month']`.
-- `zoom`  show zoom buttons. Default `true`.
-- `today`  show the Today button. Default `true`.
-- `order`  sort order within the toolbar slot.
+- `viewModes`, modes for the segmented control. Default `['Day','Week','Month']`.
+- `zoom`, show zoom buttons. Default `true`.
+- `today`, show the Today button. Default `true`.
+- `order`, sort order within the toolbar slot.
 
 Styled via `.gantt__toolbar` / `.gantt__tb-*` in the default theme.
 

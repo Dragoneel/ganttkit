@@ -29,9 +29,9 @@ highlight works in every renderer. Shift-drag is reserved by the renderers
 
 ## Options
 
-- `multi`  allow multi-select. Default `true`.
-- `rubberBand`  enable shift-drag selection. Default `true`.
-- `menu`  `{ label, action(selectedIds) }[]` for the context menu.
+- `multi`, allow multi-select. Default `true`.
+- `rubberBand`, enable shift-drag selection. Default `true`.
+- `menu`, `{ label, action(selectedIds) }[]` for the context menu.
 
 ## API
 

@@ -2,14 +2,32 @@
   "name": "@ganttkit/plugin-i18n",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Localization for GanttKit  translatable strings + locale dates.",
+  "description": "Localization for GanttKit Gantt charts - translatable strings and locale-aware dates.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "i18n",
+    "l10n",
+    "localization",
+    "internationalization",
+    "intl"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-i18n"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -34,7 +52,7 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "@ganttkit/core": "workspace:*"
+    "@ganttkit/core": "workspace:>=0.1.0"
   },
   "devDependencies": {
     "@ganttkit/core": "workspace:*",

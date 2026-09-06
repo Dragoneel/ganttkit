@@ -1,0 +1,22 @@
+{
+  "name": "@ganttkit/example-vue-stress",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*",
+    "@ganttkit/vue": "workspace:*",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^6.0.0"
+  }
+}

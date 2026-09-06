@@ -11,7 +11,7 @@ import type { EventBus } from './event-bus'
 export interface UiMountContext {
   /** Host element to render into (owned by this contribution). */
   element: HTMLElement
-  /** The chart's scroll container  for overlay positioning and pointer math. */
+  /** The chart's scroll container, for overlay positioning and pointer math. */
   viewport: HTMLElement
   engine: GanttEngineApi
   events: EventBus<GanttEventMap>
@@ -43,7 +43,7 @@ export const UI_SLOTS = {
  * Registry of UI contributions. Plugins `register`; the renderer `list`s a slot
  * and mounts each item, re-mounting when the set changes (`subscribe`).
  *
- * The core never touches the DOM  it only stores callbacks. Renderers turn
+ * The core never touches the DOM, it only stores callbacks. Renderers turn
  * them into elements.
  */
 export class UiRegistry {

@@ -84,12 +84,12 @@ function run(rowCount: number, tasksPerRow: number): void {
   engine = e
 
   // 4. Scene + DOM size. The canvas keeps the chart DOM flat (one <canvas> +
-  // one spacer) no matter how many primitives are drawn  the headline win.
+  // one spacer) no matter how many primitives are drawn, the headline win.
   const scene = e.getScene()
   const primitives = scene.layers.reduce((sum, l) => sum + l.primitives.length, 0)
   const domNodes = app.querySelector('.gantt__chart')!.querySelectorAll('*').length
 
-  // 5. Core-only scene build (CPU, no DOM)  the cost of one drag-preview frame.
+  // 5. Core-only scene build (CPU, no DOM), the cost of one drag-preview frame.
   const scale = e.getTimeScale()
   const opts = e.getOptions()
   const cpuBuild = average(() => {

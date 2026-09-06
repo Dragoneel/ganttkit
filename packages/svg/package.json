@@ -2,14 +2,32 @@
   "name": "@ganttkit/svg",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Plain HTML/CSS/JS SVG renderer plugin for GanttKit.",
+  "description": "SVG Gantt chart renderer for GanttKit - maps the engine scene onto SVG elements.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "svg",
+    "renderer",
+    "chart",
+    "data-visualization",
+    "typescript",
+    "javascript"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/svg"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

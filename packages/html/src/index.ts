@@ -1,5 +1,5 @@
 /**
- * @ganttkit/html  plain HTML/CSS/JS renderer for GanttKit.
+ * @ganttkit/html, plain HTML/CSS/JS renderer for GanttKit.
  *
  * The DOM-twin of `@ganttkit/svg`: it consumes the same renderer-agnostic
  * scene of vector primitives but paints them as positioned `<div>`s instead of
@@ -17,7 +17,10 @@ import { GanttEngine } from '@ganttkit/core'
 import { HtmlRenderer, type HtmlRendererOptions } from './renderer'
 
 export { HtmlRenderer } from './renderer'
-export type { ChevronContent, ChevronOption, HtmlRendererOptions } from './renderer'
+export type { HtmlRendererOptions } from './renderer'
+// The chevron contract now lives in core, so every renderer shares one
+// definition. Re-exported here for back-compat.
+export type { ChevronContent, ChevronOption, RendererOptions } from '@ganttkit/core'
 
 /** A GanttKit plugin that renders the chart into a DOM element using HTML. */
 export function htmlRenderer(options: HtmlRendererOptions): GanttPlugin {

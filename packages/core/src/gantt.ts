@@ -62,7 +62,7 @@ function resolveOptions(options: GanttOptions): ResolvedGanttOptions {
 }
 
 /**
- * The GanttKit engine  headless and framework-agnostic.
+ * The GanttKit engine, headless and framework-agnostic.
  *
  * Holds the reactive state, runs the compute pipeline
  * (hooks → time-scale → layout → dependencies → scene → scene hook), hosts
@@ -290,7 +290,7 @@ export class GanttEngine implements GanttEngineApi {
   /**
    * Heavy pass: run the `rows` hook, derive the date range (one O(tasks) scan),
    * and rebuild the time scale. Followed by a windowed scene build. Called on
-   * data/view-mode/plugin changes  never on scroll.
+   * data/view-mode/plugin changes, never on scroll.
    */
   private recompute(): void {
     const state = this.store.get()

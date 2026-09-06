@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-filter  a feature plugin that filters rows and tasks.
+ * @ganttkit/plugin-filter, a feature plugin that filters rows and tasks.
  *
  * It demonstrates the GanttKit feature-plugin contract: tap the `rows` data
  * hook to reshape the dataset before layout, expose imperative `commands`, and
@@ -46,7 +46,7 @@ export interface GanttFilter {
  * Create a filter controller and its plugin.
  *
  * Task filtering runs first (per-row), then optional empty-row pruning, then the
- * row filter  so `dropEmptyRows` hides rows whose tasks were all filtered out.
+ * row filter, so `dropEmptyRows` hides rows whose tasks were all filtered out.
  */
 export function createFilter(options: FilterOptions = {}): GanttFilter {
   let rowPredicate: RowPredicate | null = options.row ?? null

@@ -1,8 +1,10 @@
 import type {
+  ChevronOption,
   DragMode,
   GanttContext,
   GanttRow,
   GanttTask,
+  RendererOptions,
   Scene,
   Viewport,
 } from '@ganttkit/core'
@@ -38,40 +40,14 @@ interface SidebarProvider {
   setColumnWidth?: (key: string, width: number) => void
 }
 
-/**
- * Content for a tree chevron: a markup string (plain text/emoji, an inline
- * `<svg>…</svg>`, or an `<img src>`), or a DOM node built by the caller. Nodes
- * are cloned per row, so a single node may be reused across rows.
- */
-export type ChevronContent = string | Node
-
-/**
- * Customize the tree chevron. Either fixed content for the two states, or a
- * function invoked per tree row (e.g. to vary the icon by level or row data).
- */
-export type ChevronOption =
-  | { collapsed: ChevronContent, expanded: ChevronContent }
-  | ((state: { expanded: boolean, row: GanttRow }) => ChevronContent)
-
 /** Default chevron: unicode triangles, matching the shipped stylesheet. */
 const DEFAULT_CHEVRON = { collapsed: '▸', expanded: '▾' }
 
-export interface HtmlRendererOptions {
-  /** Element (or selector) to render into. */
-  target: HTMLElement | string
-  /** Initial theme. Toggle later via the `data-theme` attribute. */
-  theme?: 'light' | 'dark'
-  /** Enable ctrl/⌘ + wheel to change view mode. Default `true`. */
-  enableZoom?: boolean
-  /** Enable click-drag panning of the chart body. Default `true`. */
-  enablePan?: boolean
-  /**
-   * Custom tree expand/collapse chevron. Accepts a markup string (text, emoji,
-   * inline SVG or an `<img>`) or a DOM node, either as fixed collapsed/expanded
-   * content or a per-row function. Defaults to `▸`/`▾`.
-   */
-  chevron?: ChevronOption
-}
+/**
+ * Options for the html renderer. Identical to every other base
+ * renderer, so the three are drop-in swaps for one another.
+ */
+export type HtmlRendererOptions = RendererOptions
 
 /**
  * Imperative HTML/DOM renderer for a GanttKit engine.
@@ -80,7 +56,7 @@ export interface HtmlRendererOptions {
  * agnostic scene of vector primitives, but paints each one as a positioned
  * `<div>` (styled with `background`/`border`/`clip-path`) instead of an SVG
  * element. Same data-attributes, same gestures, so every feature plugin works
- * unchanged. It owns no geometry  that all comes from `@ganttkit/core`.
+ * unchanged. It owns no geometry, that all comes from `@ganttkit/core`.
  */
 export class HtmlRenderer {
   private readonly ctx: GanttContext
@@ -129,7 +105,7 @@ export class HtmlRenderer {
       },
     }))
     // Set the viewport before the first paint so we never build the full scene
-    // into the DOM  even initially only the visible window is rendered.
+    // into the DOM, even initially only the visible window is rendered.
     if (this.bodyEl.clientHeight > 0)
       this.ctx.engine.setViewport(this.computeViewport())
     this.renderAll()
@@ -463,7 +439,7 @@ export class HtmlRenderer {
     document.addEventListener('mouseup', onUp)
   }
 
-  /** Live width update during a resize drag  pure DOM writes, no recompute. */
+  /** Live width update during a resize drag, pure DOM writes, no recompute. */
   private previewColumnWidth(index: number, width: number, total: number): void {
     const headCell = this.sidebarHeadEl.querySelectorAll<HTMLElement>('.gantt__head-cell')[index]
     if (headCell)
@@ -594,7 +570,7 @@ export class HtmlRenderer {
     const onMove = (e: MouseEvent) => {
       drag = updateDrag(drag, e.clientX)
       const { start, end } = resolveDraggedDates(task, drag, adapter)
-      // Engine builds a windowed preview  pixel-accurate and O(visible).
+      // Engine builds a windowed preview, pixel-accurate and O(visible).
       this.ctx.engine.setDragPreview(taskId, start, end)
       this.ctx.events.emit('task:dragmove', { task, row, mode, start, end, changed: true })
     }

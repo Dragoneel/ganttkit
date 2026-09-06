@@ -2,14 +2,32 @@
   "name": "@ganttkit/plugin-columns",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "Sidebar columns feature plugin for GanttKit.",
+  "description": "Sidebar columns for GanttKit Gantt charts - a resizable, tree-aware task table beside the timeline.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "plugin",
+    "columns",
+    "sidebar",
+    "table",
+    "grid",
+    "task-list"
+  ],
+  "homepage": "https://ganttkit.org",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dragoneel/ganttkit.git",
     "directory": "packages/plugin-columns"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -34,7 +52,7 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "@ganttkit/core": "workspace:*"
+    "@ganttkit/core": "workspace:>=0.1.0"
   },
   "devDependencies": {
     "@ganttkit/core": "workspace:*",

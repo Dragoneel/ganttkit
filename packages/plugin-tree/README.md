@@ -2,7 +2,7 @@
 
 Hierarchical rows with expand/collapse. A rows-hook plugin: it relates rows by
 `parentId`, hides descendants of collapsed rows, and annotates each row with
-`level`, `hasChildren`, and `expanded`  the core fields the renderers' sidebar
+`level`, `hasChildren`, and `expanded`, the core fields the renderers' sidebar
 reads to draw a chevron.
 
 ```ts
@@ -29,7 +29,7 @@ Toggling works two ways, both **decoupled from the renderer**:
 ## API
 
 - `createTree(options?) → GanttTree`
-  - `options.collapsed`  row ids collapsed initially
+  - `options.collapsed`, row ids collapsed initially
 - `GanttTree`: `{ plugin, toggle, expand, collapse, expandAll, collapseAll, isCollapsed }`
 
 ## License

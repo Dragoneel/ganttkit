@@ -1,0 +1,81 @@
+{
+  "name": "@ganttkit/vue",
+  "version": "0.1.2",
+  "author": "dchar",
+  "description": "Vue 3 Gantt chart component for GanttKit - a <GanttChart> binding over the HTML, SVG or canvas renderer.",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "vue",
+    "vue3",
+    "vue-component",
+    "vue-gantt",
+    "composable",
+    "component",
+    "typescript"
+  ],
+  "homepage": "https://ganttkit.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0",
+    "@ganttkit/svg": "workspace:>=0.1.0",
+    "@ganttkit/canvas": "workspace:>=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@ganttkit/svg": {
+      "optional": true
+    },
+    "@ganttkit/canvas": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/html": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "vue": "^3.5.42"
+  }
+}

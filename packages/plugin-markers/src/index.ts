@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-markers  vertical date markers and bands.
+ * @ganttkit/plugin-markers, vertical date markers and bands.
  *
  * A scene-hook plugin for deadlines, a "now" line, sprint/release boundaries, or
  * shaded date ranges. Pure engine-side, so it works with every renderer.

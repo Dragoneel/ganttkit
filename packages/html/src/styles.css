@@ -3,7 +3,7 @@
  * `.gantt`. Switch themes with `data-theme="light|dark"` on the root element.
  *
  * The layout/header/sidebar rules are identical to `@ganttkit/svg`; only the
- * chart-body "Scene primitives" section differs  there, vector primitives are
+ * chart-body "Scene primitives" section differs: there, vector primitives are
  * painted as positioned `<div>`s (background/border/clip-path) rather than SVG
  * fill/stroke. Every colour is a CSS variable so you can override the palette.
  */
@@ -445,7 +445,7 @@
  * Scene primitives (HTML edition)
  *
  * Each scene layer is a full-size, click-transparent box; only the actual
- * primitives that need interaction opt back into pointer events  this mirrors
+ * primitives that need interaction opt back into pointer events, this mirrors
  * SVG, where `<g>` groups never intercept hits, only the shapes do.
  */
 .gantt__layer {

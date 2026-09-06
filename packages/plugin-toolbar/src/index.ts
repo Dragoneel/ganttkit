@@ -1,5 +1,5 @@
 /**
- * @ganttkit/plugin-toolbar  a view-mode / zoom / today toolbar.
+ * @ganttkit/plugin-toolbar, a view-mode / zoom / today toolbar.
  *
  * A UI-slot plugin: it renders plain DOM into the renderer's `toolbar` slot, so
  * one package works across svg, html, canvas, vue and nuxt. Requires a renderer that

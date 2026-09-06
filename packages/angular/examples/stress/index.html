@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GanttKit | Angular renderer stress test</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #f3f4f6; color: #111827; }
+    header { padding: 12px 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid #e5e7eb; background: #fff; }
+    header select, header button, header input { padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; }
+    header button { cursor: pointer; font-weight: 600; }
+    .wrap { display: flex; gap: 12px; padding: 12px 16px; align-items: flex-start; }
+    .metrics { flex: 0 0 320px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(0, 0, 0, .06); }
+    caption { text-align: left; font-weight: 700; padding: 8px 10px; }
+    td { padding: 5px 10px; border-top: 1px solid #f3f4f6; }
+    td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+    .good { color: #15803d; }
+    .warn { color: #b45309; }
+    .bad { color: #b91c1c; }
+    .chart { flex: 1 1 auto; height: 78vh; min-width: 0; }
+    .note { font-size: 12px; color: #6b7280; margin: 8px 2px; }
+  </style>
+</head>
+
+<body>
+  <app-root></app-root>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
+</html>

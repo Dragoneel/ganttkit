@@ -1,5 +1,5 @@
 /**
- * @ganttkit/svg  plain HTML/CSS/JS SVG renderer for GanttKit.
+ * @ganttkit/svg, plain HTML/CSS/JS SVG renderer for GanttKit.
  *
  * Maps the engine's renderer-agnostic vector primitives 1:1 onto SVG elements.
  *
@@ -15,7 +15,10 @@ import { GanttEngine } from '@ganttkit/core'
 import { SvgRenderer, type SvgRendererOptions } from './renderer'
 
 export { SvgRenderer } from './renderer'
-export type { ChevronContent, ChevronOption, SvgRendererOptions } from './renderer'
+export type { SvgRendererOptions } from './renderer'
+// The chevron contract now lives in core, so every renderer shares one
+// definition. Re-exported here for back-compat.
+export type { ChevronContent, ChevronOption, RendererOptions } from '@ganttkit/core'
 
 /** A GanttKit plugin that renders the chart into a DOM element as SVG. */
 export function svgRenderer(options: SvgRendererOptions): GanttPlugin {

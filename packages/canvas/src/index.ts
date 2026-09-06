@@ -1,5 +1,5 @@
 /**
- * @ganttkit/canvas  plain HTML/CSS/JS canvas renderer for GanttKit.
+ * @ganttkit/canvas, plain HTML/CSS/JS canvas renderer for GanttKit.
  *
  * The third sibling of `@ganttkit/svg` and `@ganttkit/html`: it consumes the
  * same renderer-agnostic scene of vector primitives but draws them into a single
@@ -17,7 +17,10 @@ import { GanttEngine } from '@ganttkit/core'
 import { CanvasRenderer, type CanvasRendererOptions } from './renderer'
 
 export { CanvasRenderer } from './renderer'
-export type { CanvasRendererOptions, ChevronContent, ChevronOption } from './renderer'
+export type { CanvasRendererOptions } from './renderer'
+// The chevron contract now lives in core, so every renderer shares one
+// definition. Re-exported here for back-compat.
+export type { ChevronContent, ChevronOption, RendererOptions } from '@ganttkit/core'
 
 /** A GanttKit plugin that renders the chart into a DOM element using canvas. */
 export function canvasRenderer(options: CanvasRendererOptions): GanttPlugin {
