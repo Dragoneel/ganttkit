@@ -51,7 +51,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {
-    "@ganttkit/core": "workspace:*"
+    "@ganttkit/core": "workspace:>=0.1.0"
   },
   "devDependencies": {
     "@ganttkit/core": "workspace:*",

@@ -56,8 +56,8 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "@ganttkit/svg": "workspace:*",
-    "@ganttkit/canvas": "workspace:*"
+    "@ganttkit/svg": "workspace:>=0.1.0",
+    "@ganttkit/canvas": "workspace:>=0.1.0"
   },
   "peerDependenciesMeta": {
     "@ganttkit/svg": {
