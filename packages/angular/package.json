@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/angular",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Angular Gantt chart component for GanttKit - a <gantt-chart> binding over the HTML, SVG or canvas renderer.",
   "keywords": [

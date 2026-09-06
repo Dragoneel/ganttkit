@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-columns",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Sidebar columns for GanttKit Gantt charts - a resizable, tree-aware task table beside the timeline.",
   "keywords": [

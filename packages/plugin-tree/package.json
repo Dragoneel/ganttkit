@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-tree",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Hierarchical rows with expand and collapse for GanttKit Gantt charts - a work breakdown structure.",
   "keywords": [

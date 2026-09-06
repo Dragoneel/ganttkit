@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/core",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Headless, framework-agnostic Gantt chart engine for JavaScript and TypeScript, with a plugin host and zero runtime dependencies.",
   "keywords": [

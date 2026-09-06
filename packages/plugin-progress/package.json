@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-progress",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Task progress and completion fill for GanttKit Gantt charts.",
   "keywords": [

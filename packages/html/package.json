@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/html",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "HTML Gantt chart renderer for GanttKit - paints the engine scene as positioned DOM elements.",
   "keywords": [

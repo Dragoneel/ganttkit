@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/vue",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Vue 3 Gantt chart component for GanttKit - a <GanttChart> binding over the HTML, SVG or canvas renderer.",
   "keywords": [

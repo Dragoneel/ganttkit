@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/canvas",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Canvas Gantt chart renderer for GanttKit - draws the engine scene into one 2D canvas, for the largest datasets.",
   "keywords": [

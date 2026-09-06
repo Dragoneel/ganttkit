@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-selection",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Task selection, rubber-band and context menu for GanttKit Gantt charts.",
   "keywords": [

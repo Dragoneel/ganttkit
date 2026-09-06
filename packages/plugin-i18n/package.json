@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/plugin-i18n",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Localization for GanttKit Gantt charts - translatable strings and locale-aware dates.",
   "keywords": [
