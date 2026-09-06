@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-  # So a failed publish can be retried without an empty commit.
+  # Lets a partial publish be retried without an empty commit.
   workflow_dispatch:
 
-# Two releases running at once would race on the version bump and the tags.
+# Two releases at once would race on the version bump and the tags.
 concurrency:
   group: release
   cancel-in-progress: false
@@ -31,8 +31,19 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      # Nothing to release unless a changeset is waiting, so an ordinary push to
-      # main (docs, a CI tweak) stops after this step.
+      # ci.yml only gates pull requests, and this workflow can publish straight
+      # off a push, so the same gates run here before anything is released.
+      - name: Type checking
+        run: pnpm typecheck
+
+      - name: Linting
+        run: pnpm lint
+
+      - name: Unit tests
+        run: pnpm test
+
+      # A version bump only happens when a changeset is waiting. Without one
+      # this is a plain push, and the publish step below is a no-op.
       - name: Look for pending changesets
         id: pending
         run: |
@@ -40,22 +51,7 @@ jobs:
             echo 'found=true' >> "$GITHUB_OUTPUT"
           else
             echo 'found=false' >> "$GITHUB_OUTPUT"
-            echo 'No changesets pending, nothing to release.' >> "$GITHUB_STEP_SUMMARY"
           fi
-
-      # ci.yml only gates pull requests, and this workflow publishes straight
-      # from a push, so the same gates run here before anything is released.
-      - name: Type checking
-        if: steps.pending.outputs.found == 'true'
-        run: pnpm typecheck
-
-      - name: Linting
-        if: steps.pending.outputs.found == 'true'
-        run: pnpm lint
-
-      - name: Unit tests
-        if: steps.pending.outputs.found == 'true'
-        run: pnpm test
 
       - name: Apply the version bump
         if: steps.pending.outputs.found == 'true'
@@ -65,10 +61,6 @@ jobs:
       - name: Refresh the lockfile
         if: steps.pending.outputs.found == 'true'
         run: pnpm install --no-frozen-lockfile
-
-      - name: Build all packages
-        if: steps.pending.outputs.found == 'true'
-        run: pnpm build
 
       # Pushed with GITHUB_TOKEN, and a GITHUB_TOKEN push deliberately does not
       # start another workflow run, so this cannot loop back into itself.
@@ -87,11 +79,15 @@ jobs:
           git push
           echo "Released v$version" >> "$GITHUB_STEP_SUMMARY"
 
-      # Publishes to npm, pushes a tag per package, and opens a GitHub release
-      # for each. There are no changesets left by now, so the action goes
-      # straight to publishing instead of raising a pull request.
+      - name: Build all packages
+        run: pnpm build
+
+      # Deliberately not gated on a changeset being present. `changeset publish`
+      # skips anything already on npm, so an ordinary push is a no-op, while a
+      # release that published only part of the workspace - npm returns a 409
+      # often enough when several new packages land at once - is finished by the
+      # next push or by a manual run of this workflow.
       - name: Publish
-        if: steps.pending.outputs.found == 'true'
         uses: changesets/action@v1
         with:
           publish: pnpm changeset:publish
