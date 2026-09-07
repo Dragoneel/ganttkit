@@ -1,6 +1,6 @@
 {
   "name": "@ganttkit/nuxt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "dchar",
   "description": "Nuxt module for GanttKit - zero-config <GanttChart> and useGantt, with the renderer chosen in nuxt.config.",
   "keywords": [
