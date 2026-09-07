@@ -39,6 +39,9 @@
       "@ganttkit/vue": [
         "./packages/vue/src"
       ],
+      "@ganttkit/nuxt": [
+        "./packages/nuxt/src/module.ts"
+      ],
       "@ganttkit/react": [
         "./packages/react/src"
       ],

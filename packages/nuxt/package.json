@@ -1,0 +1,87 @@
+{
+  "name": "@ganttkit/nuxt",
+  "version": "0.1.0",
+  "author": "dchar",
+  "description": "Nuxt module for GanttKit - zero-config <GanttChart> and useGantt, with the renderer chosen in nuxt.config.",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "gantt",
+    "gantt-chart",
+    "ganttkit",
+    "project-management",
+    "timeline",
+    "scheduling",
+    "vue",
+    "ssr",
+    "component",
+    "composable",
+    "typescript"
+  ],
+  "homepage": "https://ganttkit.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragoneel/ganttkit.git",
+    "directory": "packages/nuxt"
+  },
+  "bugs": {
+    "url": "https://github.com/Dragoneel/ganttkit/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build build",
+    "dev": "nuxt-module-build build --stub",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare examples/playground",
+    "playground": "nuxt dev examples/playground",
+    "playground:build": "nuxt build examples/playground",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/html": "workspace:*",
+    "@ganttkit/vue": "workspace:*",
+    "@nuxt/kit": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@ganttkit/canvas": "workspace:>=0.1.0",
+    "@ganttkit/svg": "workspace:>=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@ganttkit/canvas": {
+      "optional": true
+    },
+    "@ganttkit/svg": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^1.0.3",
+    "@nuxt/schema": "^4.5.2",
+    "nuxt": "^4.5.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "vue": "^3.5.42"
+  }
+}

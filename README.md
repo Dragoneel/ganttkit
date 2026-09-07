@@ -28,6 +28,8 @@ GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
   - **`@ganttkit/vue`**  a `<GanttChart>` component for Vue 3.
   - **`@ganttkit/react`**  a `<GanttChart>` component for React 19.
   - **`@ganttkit/angular`**  a `<gantt-chart>` standalone component for Angular.
+  - **`@ganttkit/nuxt`**  a Nuxt module over the Vue binding: an auto-imported
+    `<GanttChart>`, with the renderer and chart defaults set in `nuxt.config`.
 - **Feature plugins**  extend behaviour through the plugin API:
   - **`@ganttkit/plugin-columns`**  the sidebar columns (deliberately *not* in
     the core; renderers draw a sidebar only when this is installed).
@@ -86,6 +88,7 @@ See each package's `examples/` directory for runnable demos.
 | [`@ganttkit/vue`](packages/vue) | Vue 3 component over any base renderer |
 | [`@ganttkit/react`](packages/react) | React 19 component over any base renderer |
 | [`@ganttkit/angular`](packages/angular) | Angular component over any base renderer |
+| [`@ganttkit/nuxt`](packages/nuxt) | Nuxt module: auto-imported chart, renderer chosen in `nuxt.config` |
 | [`@ganttkit/plugin-columns`](packages/plugin-columns) | Sidebar columns feature plugin |
 | [`@ganttkit/plugin-filter`](packages/plugin-filter) | Row filtering feature plugin |
 | [`@ganttkit/plugin-progress`](packages/plugin-progress) | Task completion fill |

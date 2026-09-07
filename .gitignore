@@ -13,3 +13,4 @@ coverage/
 .ngc/
 .svelte-kit
 .claude
+.nuxt/

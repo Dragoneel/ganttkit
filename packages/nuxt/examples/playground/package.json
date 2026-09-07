@@ -1,0 +1,29 @@
+{
+  "name": "@ganttkit/example-nuxt",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@ganttkit/core": "workspace:*",
+    "@ganttkit/nuxt": "workspace:*",
+    "@ganttkit/plugin-baseline": "workspace:*",
+    "@ganttkit/plugin-columns": "workspace:*",
+    "@ganttkit/plugin-dependencies": "workspace:*",
+    "@ganttkit/plugin-filter": "workspace:*",
+    "@ganttkit/plugin-markers": "workspace:*",
+    "@ganttkit/plugin-progress": "workspace:*",
+    "@ganttkit/plugin-selection": "workspace:*",
+    "@ganttkit/plugin-toolbar": "workspace:*",
+    "@ganttkit/plugin-tooltip": "workspace:*",
+    "@ganttkit/plugin-tree": "workspace:*"
+  },
+  "devDependencies": {
+    "nuxt": "^4.5.2"
+  }
+}

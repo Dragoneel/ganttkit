@@ -2,7 +2,7 @@
   "name": "@ganttkit/monorepo",
   "version": "0.1.2",
   "author": "dchar",
-  "description": "GanttKit - a headless, framework-agnostic Gantt chart engine for JavaScript and TypeScript, with SVG, HTML and canvas renderers and Vue, React and Angular bindings.",
+  "description": "GanttKit - a headless, framework-agnostic Gantt chart engine for JavaScript and TypeScript, with SVG, HTML and canvas renderers and Vue, React, Angular and Nuxt bindings.",
   "keywords": [
     "gantt",
     "gantt-chart",
@@ -19,7 +19,8 @@
     "canvas",
     "vue",
     "react",
-    "angular"
+    "angular",
+    "nuxt"
   ],
   "homepage": "https://ganttkit.org",
   "repository": {
