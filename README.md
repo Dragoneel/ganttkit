@@ -5,6 +5,10 @@
 
 A **framework-agnostic, plugin-driven Gantt chart engine**.
 
+> **Production use.** GanttKit was built in-house by a team to power real planning
+> screens, not as a side experiment. It ships today in several internal company
+> applications, where thousands of users work with it daily.
+
 GanttKit splits a Gantt chart into a **headless engine** and **thin plugins**:
 
 - **`@ganttkit/core`**  the engine. Owns the data model, time-scale, layout
